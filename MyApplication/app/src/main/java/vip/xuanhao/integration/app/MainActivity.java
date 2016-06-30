@@ -1,10 +1,10 @@
 package vip.xuanhao.integration.app;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private View mContentView;
     private View mControlsView;
     private boolean mVisible;
+
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
