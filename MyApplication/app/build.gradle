@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
+    defaultConfig {
+        applicationId "vip.xuanhao.integration"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+//        multiDexEnabled = true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'// 动态权限申请
+    compile 'io.reactivex:rxandroid:1.2.1' //RxAndroid
+    compile 'io.reactivex:rxjava:1.1.6'  // Rxjava
+    compile 'com.squareup.picasso:picasso:2.5.2'//picasso 图片加载框架
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'//picasso 图形处理
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1' // If you want to use the GPU Filters
+    compile 'com.orhanobut:logger:1.15'//logger
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'//retrofit
+    compile 'com.squareup.okio:okio:1.8.0' //okio
+    compile 'com.squareup.retrofit2:converter-jackson:2.1.0' //retrofit  转换器
+    compile 'com.squareup.okhttp3:okhttp:3.3.1' // ok http
+    compile 'org.greenrobot:eventbus:3.0.0' //EventBus
+
+    compile 'com.google.dagger:dagger:2.4'
+    apt 'com.google.dagger:dagger-compiler:2.4'
+
+    //内存泄漏检测工具
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+}
