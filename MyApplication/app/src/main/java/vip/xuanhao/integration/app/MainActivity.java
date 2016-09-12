@@ -169,4 +169,18 @@ public class MainActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+
+    /*@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch(keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                this.finish();
+                overridePendingTransition(R.anim.alpha_in,R.anim.bottom_out);
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }*/
 }

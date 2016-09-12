@@ -18,7 +18,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        MultiDex.install(this);  //方法超出限值
         Logger.d(TAG, "BaseApplication is onCreate");
     }
 }

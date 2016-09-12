@@ -20,4 +20,32 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+
+    <style name="LoginActiivty" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/Activity_style</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Activity_style" parent="@android:style/Animation.Activity">
+        <item name="android:activityCloseEnterAnimation">@anim/alpha_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/bottom_out</item>
+        <item name="android:activityOpenEnterAnimation">@anim/bottom_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/alpha_out</item>
+
+        <item name="android:taskOpenEnterAnimation">@anim/bottom_in</item>
+
+        <item name="android:taskOpenExitAnimation">@anim/bottom_out</item>
+
+        <item name="android:taskCloseEnterAnimation">@anim/alpha_out</item>
+
+        <item name="android:taskCloseExitAnimation">@anim/bottom_out</item>
+
+        <item name="android:taskToFrontEnterAnimation">@anim/bottom_in</item>
+
+        <item name="android:taskToFrontExitAnimation">@anim/alpha_out</item>
+
+        <item name="android:taskToBackEnterAnimation">@anim/alpha_out</item>
+
+        <item name="android:taskToBackExitAnimation">@anim/bottom_out</item>
+    </style>
 </resources>
