@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -20,4 +21,30 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="WidgetProgressBar" parent="android:Widget.ProgressBar">　　
+        <item name="android:indeterminateDrawable">@drawable/progress_large_white</item>
+        <item name="android:indeterminateDuration">600</item>
+        <item name="android:minWidth">32dip</item>
+        　　
+        <item name="android:maxWidth">32dip</item>
+        　　
+        <item name="android:minHeight">32dip</item>
+        　　
+        <item name="android:maxHeight">32dip</item>
+    </style>
+
+    <style name="MainActivityStyle" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="Title_tabStyle" parent="Widget.Design.TabLayout">
+
+    </style>
 </resources>

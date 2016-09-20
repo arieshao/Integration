@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+
+    <ImageView
+        android:id="@+id/img_guide_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/gudie_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingEnd="60dp"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:paddingStart="60dp" />
+
+
+    <Button
+        android:id="@+id/btn_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="80dp"
+        android:background="#d125df"
+        android:visibility="gone"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="24dp" />
+
+
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/magic_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="20dp" />
+
+
+</android.support.design.widget.CoordinatorLayout>

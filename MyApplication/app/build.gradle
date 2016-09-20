@@ -1,18 +1,21 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0"
+    buildToolsVersion '24'
     defaultConfig {
         applicationId "vip.xuanhao.integration"
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 21
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
 //        multiDexEnabled = true
 
     }
@@ -22,47 +25,73 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+    }
+}
+
+repositories{
+    maven {
+        url "https://jitpack.io"
+    }
+    mavenCentral()  // GPUImage for Android
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
-    // 动态权限申请
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
-    //RxAndroid
     compile 'io.reactivex:rxandroid:1.2.1'
-    // Rxjava
     compile 'io.reactivex:rxjava:1.1.6'
-    //picasso 图片加载框架
+    compile 'com.trello:rxlifecycle:0.6.1'
+    compile 'com.trello:rxlifecycle-components:0.6.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
-    //picasso 图形处理
     compile 'jp.wasabeef:picasso-transformations:2.1.0'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
-    //logger
     compile 'com.orhanobut:logger:1.15'
-    //retrofit
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    //okio
     compile 'com.squareup.okio:okio:1.8.0'
-    // ok http
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'cn.finalteam:okhttpfinal:2.0.7'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-    //EventBus
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.google.dagger:dagger:2.4'
-    apt 'com.google.dagger:dagger-compiler:2.4'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+    compile 'org.jetbrains:annotations-java5:15.0'
+    compile 'com.facebook.stetho:stetho:1.3.1'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.3'
+    compile 'com.jakewharton:butterknife:8.2.1'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
     testCompile 'junit:junit:4.12'
-    //内存泄漏检测工具
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support:support-annotations:23.4.0'
-
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
+    apt 'com.google.dagger:dagger-compiler:2.4'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.5'
+    compile project(':libs-release')
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    // banner
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.hackware1993:MagicIndicator:1.4.0'
+    compile 'com.andkulikov:transitionseverywhere:1.6.9'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    // If you want to use the GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
+    compile project(':blurlibrary')
 }

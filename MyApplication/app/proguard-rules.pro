@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep public class * extends android.content.BroadcastReceiver
+-keep vip.xuanhao.integration.pushreceiver.PushReceiver {*;}
+#友盟统计
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
