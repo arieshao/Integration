@@ -120,6 +120,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+
     }
 
     @Override

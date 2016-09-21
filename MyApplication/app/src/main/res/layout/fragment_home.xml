@@ -4,12 +4,6 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="HomeFragment"
-        android:textSize="30sp" />
-
+    <include layout="@layout/banner_layout" />
 
 </RelativeLayout>
