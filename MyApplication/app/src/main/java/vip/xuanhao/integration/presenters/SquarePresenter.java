@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
+
 /**
  * Created by Xuanhao on 2016/9/19.
  */

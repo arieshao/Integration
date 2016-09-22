@@ -33,7 +33,7 @@ android {
     }
 }
 
-repositories{
+repositories {
     maven {
         url "https://jitpack.io"
     }
@@ -81,12 +81,12 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.5'
+//    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.5' //这个tab 有个坑.不能禁用ViewPager滑动动画
     compile project(':libs-release')
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.bigkoo:convenientbanner:2.0.5'
-    // banner
+    compile 'com.bigkoo:convenientbanner:2.0.5' // banner
+
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.hackware1993:MagicIndicator:1.4.0'
     compile 'com.andkulikov:transitionseverywhere:1.6.9'
@@ -94,5 +94,6 @@ dependencies {
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
     compile project(':blurlibrary')
-    compile 'com.github.devlight:infinitecycleviewpager:1.0.2' //比较牛逼的那个Viewpager
+    compile 'com.github.devlight:infinitecycleviewpager:1.0.2' //比较牛逼的那个Viewpager(横竖都能滚动)
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
 }

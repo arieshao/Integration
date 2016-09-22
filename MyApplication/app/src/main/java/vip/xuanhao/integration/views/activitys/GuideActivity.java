@@ -1,9 +1,6 @@
 package vip.xuanhao.integration.views.activitys;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -11,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
@@ -22,7 +17,9 @@ import butterknife.OnClick;
 import integration.xuanhao.vip.blurlibrary.BlurTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.GuidePresenter;
-import vip.xuanhao.integration.presenters.IGuidePresenter;
+import vip.xuanhao.integration.presenters.ipresenter.IGuidePresenter;
+import vip.xuanhao.integration.utils.AnimatorHelper;
+import vip.xuanhao.integration.utils.ImageLoaderHelper;
 import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
 
 /**
@@ -31,14 +28,18 @@ import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
 
 public class GuideActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
+    private static final String TAG = GuideActivity.class.getSimpleName();
+
     @BindView(R.id.gudie_viewpager)
     ViewPager mViewPager;
     @BindView(R.id.magic_indicator)
     MagicIndicator magicIndicator;
-    @BindView(R.id.btn_guide)
-    Button btnGuide;
     @BindView(R.id.img_guide_bg)
     ImageView imgGuideBg;
+    @BindView(R.id.btn_jump)
+    Button btnJump;
+    @BindView(R.id.btn_guide)
+    Button btnGuide;
     private IGuidePresenter iGuidePresenter;
 
 
@@ -65,12 +66,11 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
         mViewPager.setAdapter(iGuidePresenter.getAdapter());
         mViewPager.setOffscreenPageLimit(iGuidePresenter.getDataSize());
         initMagicIndicator();
-        Glide.with(this).load(iGuidePresenter.getGuideData().get(0))
-                .transform(new BlurTransformation(this))
-                .crossFade()
-                .into(imgGuideBg);
+        ImageLoaderHelper.loadImage(this
+                , iGuidePresenter.getGuideData().get(0)
+                , imgGuideBg
+                , new BlurTransformation(this));
     }
-
 
     private void initMagicIndicator() {
         ScaleCircleNavigator scaleCircleNavigator = new ScaleCircleNavigator(this);
@@ -86,10 +86,10 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
         magicIndicator.setNavigator(scaleCircleNavigator);
     }
 
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         magicIndicator.onPageScrolled(position, positionOffset, positionOffsetPixels);
-
     }
 
     @Override
@@ -100,45 +100,17 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
             btnGuide.setVisibility(View.VISIBLE);
             ObjectAnimator show = ObjectAnimator.ofFloat(btnGuide, "TranslationY", btnGuide.getHeight(), 0f);
             ObjectAnimator alphashow = ObjectAnimator.ofFloat(btnGuide, "alpha", 0f, 1f);
-
-            AnimatorSet animatorSet = new AnimatorSet();
-            animatorSet.setDuration(200);
-            animatorSet.play(show).with(alphashow);
-            animatorSet.start();
+            AnimatorHelper.playTogether(show, alphashow);
         } else {
             ObjectAnimator hidden = ObjectAnimator.ofFloat(btnGuide, "TranslationY", 0f, btnGuide.getHeight());
             ObjectAnimator alphahidden = ObjectAnimator.ofFloat(btnGuide, "alpha", 1f, 0f);
-            AnimatorSet animatorSet = new AnimatorSet();
-            animatorSet.setDuration(200);
-            animatorSet.play(hidden).with(alphahidden);
-            animatorSet.start();
-            hidden.addListener(new Animator.AnimatorListener() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    btnGuide.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animator animation) {
-
-                }
-            });
+            AnimatorHelper.playTogether(hidden, alphahidden);
+            AnimatorHelper.bindView(hidden, btnGuide);
         }
-
-        Glide.with(this).load(iGuidePresenter.getGuideData().get(position))
-                .transform(new BlurTransformation(this))
-                .crossFade()
-                .into(imgGuideBg);
+        ImageLoaderHelper.loadImage(this
+                , iGuidePresenter.getGuideData().get(position)
+                , imgGuideBg
+                , new BlurTransformation(this));
         ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(imgGuideBg, "alpha", 0f, 1f);
         fadeAnim.setDuration(300);
         fadeAnim.start();
@@ -151,11 +123,22 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        iGuidePresenter.onResume(this, TAG);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        iGuidePresenter.onPause(this, TAG);
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         this.finish();
     }
-
 
     @Override
     protected void onDestroy() {
@@ -163,11 +146,14 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
         iGuidePresenter.release();
     }
 
-    @OnClick(R.id.btn_guide)
-    public void onClick() {
-        Intent intent = new Intent(GuideActivity.this, MainActivity.class);
-        startActivity(intent);
+    @OnClick({R.id.btn_jump, R.id.btn_guide})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_jump:
+            case R.id.btn_guide:
+                iGuidePresenter.jump();
+                break;
+        }
     }
-
 }
 

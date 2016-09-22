@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.presenters.IPersonal;
+import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 import vip.xuanhao.integration.presenters.PersonalPresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;

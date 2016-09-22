@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.presenters.ipresenter.IHomePresenter;
 import vip.xuanhao.integration.views.adapters.HorizontalPagerAdapter;
 
 /**

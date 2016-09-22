@@ -6,24 +6,25 @@
     android:fitsSystemWindows="false">
 
 
+    <Button
+        android:id="@+id/btn_jump"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_gravity="right|top"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/button_bg"
+        android:text="@string/btn_jump"
+
+        android:textColor="@color/color_primary_dark"
+        android:textSize="10sp" />
+
     <ImageView
         android:id="@+id/img_guide_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/gudie_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="365dp"
-        android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingEnd="35dp"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
-        android:paddingStart="35dp" />
 
 
     <Button
@@ -46,6 +47,18 @@
         android:layout_height="45dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="20dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/gudie_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingEnd="35dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:paddingStart="35dp" />
 
 
 </android.support.design.widget.CoordinatorLayout>

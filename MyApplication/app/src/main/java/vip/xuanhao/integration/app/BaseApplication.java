@@ -49,7 +49,6 @@ public class BaseApplication extends Application {
         Logger.w("BaseApplication is onCreate");
 
         MobclickAgent.openActivityDurationTrack(false);//更改友盟默认统计方式.
-
         MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
 
         Stetho.initializeWithDefaults(this);
@@ -57,7 +56,6 @@ public class BaseApplication extends Application {
         if (shouldInit()) {
             MiPushClient.registerPush(this, APP_ID, APP_KEY);
         }
-
 
         LoggerInterface newLogger = new LoggerInterface() {
 
@@ -76,7 +74,6 @@ public class BaseApplication extends Application {
                 Log.d(TAG, content);
             }
         };
-
         com.xiaomi.mipush.sdk.Logger.setLogger(this, newLogger);
     }
 

@@ -6,7 +6,6 @@
 ![](https://raw.githubusercontent.com/arieshao/Integration/master/MyApplication/gif/guide.gif)
 
 使用控件:
-      
          ViewPager
 	 CardView
 	 Glid

@@ -14,7 +14,7 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.presenters.ISquarePresenter;
+import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 import vip.xuanhao.integration.presenters.SquarePresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.ui.ExpandFooterView;

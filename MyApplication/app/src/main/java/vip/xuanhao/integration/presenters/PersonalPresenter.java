@@ -9,6 +9,7 @@ import java.util.List;
 
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
+import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 
 /**
  * Created by Xuanhao on 2016/9/14.

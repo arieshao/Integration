@@ -13,19 +13,31 @@
         android:layout_weight="1" />
 
 
-    <com.gigamole.navigationtabbar.ntb.NavigationTabBar
-        android:id="@+id/ntb_horizontal"
+    <!--<com.gigamole.navigationtabbar.ntb.NavigationTabBar-->
+    <!--android:id="@+id/ntb_horizontal"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--app:ntb_animation_duration="260"-->
+    <!--app:ntb_badge_gravity="top"-->
+    <!--app:ntb_badge_position="right"-->
+    <!--app:ntb_badged="true"-->
+    <!--app:ntb_badge_bg_color="@android:color/transparent"-->
+    <!--app:ntb_bg_color="#ffffff"-->
+    <!--app:ntb_scaled="true"-->
+    <!--app:ntb_tinted="true"-->
+    <!--app:ntb_title_mode="all"-->
+    <!--app:ntb_titled="true" />-->
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/main_tablayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:ntb_animation_duration="260"
-        app:ntb_badge_gravity="top"
-        app:ntb_badge_position="right"
-        app:ntb_badged="true"
-        app:ntb_bg_color="#ffffff"
-        app:ntb_scaled="true"
-        app:ntb_swiped="false"
-        app:ntb_tinted="true"
-        app:ntb_title_mode="all"
-        app:ntb_titled="true" />
+        android:background="#ffffff"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        app:tl_indicator_color="#9D55B8"
+        app:tl_textSelectColor="#9D55B8"
+        app:tl_textUnselectColor="@color/color_primary_dark"
+        app:tl_underline_color="#DDDDDD"
+        app:tl_underline_height="1dp" />
 
 </LinearLayout>

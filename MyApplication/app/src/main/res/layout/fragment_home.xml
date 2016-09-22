@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include layout="@layout/banner_layout" />
 
-</RelativeLayout>
+    <com.ybao.pullrefreshview.layout.PullRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="#aabbcc" />
+    </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+
+
+</LinearLayout>

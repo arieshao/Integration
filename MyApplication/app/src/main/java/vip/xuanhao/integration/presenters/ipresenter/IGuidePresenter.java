@@ -1,4 +1,4 @@
-package vip.xuanhao.integration.presenters;
+package vip.xuanhao.integration.presenters.ipresenter;
 
 import java.util.List;
 
@@ -20,4 +20,6 @@ public interface IGuidePresenter extends IGodPresenter {
     int getDataSize();
 
     GuideAdapter getAdapter();
+
+    void jump();
 }

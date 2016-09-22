@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import integration.xuanhao.vip.blurlibrary.BlurTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.HomePresenter;
-import vip.xuanhao.integration.presenters.IHomePresenter;
+import vip.xuanhao.integration.presenters.ipresenter.IHomePresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.Iviews.IHomeView;
 import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
@@ -39,6 +39,8 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     ImageView imgHomeBannerBg;
     @BindView(R.id.banner_magic_indicator)
     MagicIndicator bannerMagicIndicator;
+
+
     private IHomePresenter homePresenter;
 
     @Nullable

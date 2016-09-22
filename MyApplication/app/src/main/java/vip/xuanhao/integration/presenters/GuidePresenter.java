@@ -1,12 +1,15 @@
 package vip.xuanhao.integration.presenters;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.presenters.ipresenter.IGuidePresenter;
+import vip.xuanhao.integration.views.activitys.MainActivity;
 import vip.xuanhao.integration.views.adapters.GuideAdapter;
 
 /**
@@ -28,8 +31,10 @@ public class GuidePresenter implements IGuidePresenter {
 
     @Override
     public List<Integer> getGuideData() {
-        integers = new ArrayList<>();
-        Collections.addAll(integers, imageResources);
+        if (integers == null) {
+            integers = new ArrayList<>();
+            Collections.addAll(integers, imageResources);
+        }
         return integers;
     }
 
@@ -42,6 +47,12 @@ public class GuidePresenter implements IGuidePresenter {
     public GuideAdapter getAdapter() {
         mAdapter = new GuideAdapter(mContext, integers);
         return mAdapter;
+    }
+
+    @Override
+    public void jump() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        mContext.startActivity(intent);
     }
 
     @Override
