@@ -16,14 +16,14 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/gudie_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="365dp"
         android:layout_gravity="center"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingEnd="60dp"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:paddingStart="60dp" />
+        android:paddingEnd="35dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:paddingStart="35dp" />
 
 
     <Button
@@ -32,7 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="80dp"
-        android:background="#d125df"
+        android:background="@drawable/button_bg"
+        android:text="@string/btn_guide"
+        android:textColor="@color/color_primary_dark"
         android:visibility="gone"
         app:cardCornerRadius="10dp"
         app:cardElevation="24dp" />
