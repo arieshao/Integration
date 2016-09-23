@@ -15,4 +15,6 @@ public interface IHomePresenter extends IGodPresenter {
     HorizontalPagerAdapter getBannerAdapter();
 
     int getBannerDataSize();
+
+    void onItemPageClick(int pos);
 }

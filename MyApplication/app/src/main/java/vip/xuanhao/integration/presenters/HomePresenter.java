@@ -67,4 +67,8 @@ public class HomePresenter implements IHomePresenter {
     public int getBannerDataSize() {
         return integers.size();
     }
+
+    @Override
+    public void onItemPageClick(int pos) {
+    }
 }

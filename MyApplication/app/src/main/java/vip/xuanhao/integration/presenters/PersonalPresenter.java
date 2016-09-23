@@ -43,6 +43,13 @@ public class PersonalPresenter implements IPersonal {
         personalViewModels.add(cache);
         personalViewModels.add(feedback);
         personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
+        personalViewModels.add(about);
         return personalViewModels;
     }
 

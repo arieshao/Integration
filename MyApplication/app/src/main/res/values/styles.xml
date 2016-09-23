@@ -47,4 +47,13 @@
     <style name="Title_tabStyle" parent="Widget.Design.TabLayout">
 
     </style>
+
+
+    <style name="TransparentText">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+    <style name="GreyText">
+        <item name="android:textColor">#ffffff</item>
+    </style>
 </resources>

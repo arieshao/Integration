@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -70,9 +71,16 @@ public class HorizontalPagerAdapter extends PagerAdapter {
             ButterKnife.bind(this, view);
         }
 
-        public void setData(int position, List<Integer> imageSrc, Context mContext) {
+        public void setData(final int position, List<Integer> imageSrc, final Context mContext) {
             Integer imgRes = imageSrc.get(position);
             Glide.with(mContext).load(imgRes).into(imgBannerItem);
+
+            imgBannerItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

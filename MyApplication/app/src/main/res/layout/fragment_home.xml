@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/banner_layout" />
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/ctl_titlebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:collapsedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/GreyText"
+            app:contentScrim="#33475f"
+            app:expandedTitleTextAppearance="@style/TransparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:title="推荐">
+
+            <include
+                layout="@layout/banner_layout"
+                app:layout_collapseMode="parallax" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:paddingTop="20dp"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
 
     <com.ybao.pullrefreshview.layout.PullRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <View
+        <ListView
+            android:id="@+id/listview_home_content"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:background="#aabbcc" />
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true" />
     </com.ybao.pullrefreshview.layout.PullRefreshLayout>
 
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
