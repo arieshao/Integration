@@ -42,11 +42,16 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ListView
+        <!--<ListView
             android:id="@+id/listview_home_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:nestedScrollingEnabled="true" />
+            android:nestedScrollingEnabled="true" />-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rec_home_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </com.ybao.pullrefreshview.layout.PullRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>

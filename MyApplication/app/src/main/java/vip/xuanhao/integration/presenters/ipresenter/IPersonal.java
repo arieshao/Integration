@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.List;
 
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
+import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/14.
@@ -41,4 +43,14 @@ public interface IPersonal extends IGodPresenter {
      * @return
      */
     String chooseIcon(Context mContext);
+
+    /**
+     * 获取适配器
+     *
+     * @param mContext
+     * @param iOnRecycleViewItemClickListener
+     * @return
+     */
+
+    PersonalAdapter getAdapter(Context mContext, IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener);
 }

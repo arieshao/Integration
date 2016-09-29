@@ -1,29 +1,28 @@
 package vip.xuanhao.integration.views.fragments;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.orhanobut.logger.Logger;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +33,7 @@ import vip.xuanhao.integration.presenters.HomePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.IHomePresenter;
 import vip.xuanhao.integration.utils.AppBarLayoutHelper;
 import vip.xuanhao.integration.views.BaseFragment;
+import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IHomeView;
 import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
 
@@ -41,7 +41,7 @@ import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.OnPageChangeListener {
+public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.OnPageChangeListener, IOnRecycleViewItemClickListener {
 
     @BindView(R.id.hicvp)
     HorizontalInfiniteCycleViewPager mCycleViewPager;
@@ -53,8 +53,10 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     AppBarLayout appbarlayoutHome;
     @BindView(R.id.ctl_titlebar)
     CollapsingToolbarLayout ctlTitlebar;
-    @BindView(R.id.listview_home_content)
-    ListView listviewHomeContent;
+    @BindView(R.id.rec_home_content)
+    RecyclerView recHomeContent;
+//    @BindView(R.id.listview_home_content)
+//    ListView listviewHomeContent;
 
     private IHomePresenter homePresenter;
 
@@ -102,15 +104,12 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     }
 
     private void initHeaderView() {
-        View headerView = LayoutInflater.from(mContext).inflate(R.layout.layout_home_button, null, false);
-        ViewHolder viewHolder = new ViewHolder(headerView);
-        List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            strings.add(" " + i);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, strings);
-        listviewHomeContent.addHeaderView(headerView);
-        listviewHomeContent.setAdapter(adapter);
+
+        recHomeContent.setLayoutManager(new LinearLayoutManager(mContext));
+        recHomeContent.setAdapter(homePresenter.getHomeAdapter(this));
+//        ViewHolder viewHolder = new ViewHolder(mContext);
+//        listviewHomeContent.addHeaderView(viewHolder.getHeaderView());
+//        listviewHomeContent.setAdapter(homePresenter.getContentListAdapter());
 
 
     }
@@ -189,8 +188,13 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
         bannerMagicIndicator.onPageScrollStateChanged(state);
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        homePresenter.onItemClick(position);
+    }
 
-    static class ViewHolder {
+
+    class ViewHolder {
         @BindView(R.id.btn_01)
         Button btn01;
         @BindView(R.id.btn_02)
@@ -200,21 +204,31 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
         @BindView(R.id.btn_04)
         Button btn04;
 
-        ViewHolder(View view) {
-            ButterKnife.bind(this, view);
+        View headerView;
+
+        ViewHolder(Context context) {
+            headerView = LayoutInflater.from(context).inflate(R.layout.layout_home_button, null, false);
+            ButterKnife.bind(this, headerView);
         }
 
+        public View getHeaderView() {
+            return headerView;
+        }
 
         @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04})
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btn_01:
+                    Toast.makeText(view.getContext(), "1", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btn_02:
+                    Toast.makeText(view.getContext(), "2", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btn_03:
+                    Toast.makeText(view.getContext(), "3", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btn_04:
+                    Toast.makeText(view.getContext(), "4", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

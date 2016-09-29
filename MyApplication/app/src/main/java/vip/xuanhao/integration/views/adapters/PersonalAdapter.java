@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -81,10 +81,10 @@ public class PersonalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         PersonalViewModel personalViewModel = personalViewModels.get(position);
 
 
-        Picasso.with(mContext)
+        Glide.with(mContext)
                 .load(personalViewModel.getItemDrawable())
-                .resize(80, 80)
-                .centerCrop()
+                .override(70, 70)
+                .skipMemoryCache(true)
                 .into(holder.imgItemPersonal);
         holder.tvItemPersonal.setText(personalViewModel.getItemName());
     }

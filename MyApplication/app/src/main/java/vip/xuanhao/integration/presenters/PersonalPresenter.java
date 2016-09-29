@@ -10,6 +10,8 @@ import java.util.List;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
 import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
+import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/14.
@@ -17,6 +19,8 @@ import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 
 public class PersonalPresenter implements IPersonal {
 
+
+    private PersonalAdapter personalAdapter;
 
     @Override
     public boolean cleanCache() {
@@ -43,13 +47,6 @@ public class PersonalPresenter implements IPersonal {
         personalViewModels.add(cache);
         personalViewModels.add(feedback);
         personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
-        personalViewModels.add(about);
         return personalViewModels;
     }
 
@@ -62,6 +59,13 @@ public class PersonalPresenter implements IPersonal {
     @Override
     public String chooseIcon(Context mContext) {
         return null;
+    }
+
+    @Override
+    public PersonalAdapter getAdapter(Context mContext, IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener) {
+        personalAdapter = new PersonalAdapter(mContext, getModelData());
+        personalAdapter.setiOnRecycleViewItemClickListener(iOnRecycleViewItemClickListener);
+        return personalAdapter;
     }
 
 
@@ -85,6 +89,6 @@ public class PersonalPresenter implements IPersonal {
 
     @Override
     public void release() {
-
+        personalAdapter = null;
     }
 }

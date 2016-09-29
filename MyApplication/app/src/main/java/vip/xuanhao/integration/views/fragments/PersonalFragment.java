@@ -11,19 +11,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
+import vip.xuanhao.integration.app.BaseApplication;
 import vip.xuanhao.integration.presenters.PersonalPresenter;
+import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IPersonalView;
-import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 import vip.xuanhao.integration.views.ui.DividerGridItemDecoration;
 
 import static vip.xuanhao.integration.R.id.rclyview_choose;
@@ -46,7 +47,6 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
 
     private IPersonal iPersonal;
 
-    private PersonalAdapter mAdapter;
 
     @Nullable
     @Override
@@ -81,17 +81,16 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
 
     @Override
     public void initView() {
-        mAdapter = new PersonalAdapter(mContext, iPersonal.getModelData());
-        mAdapter.setiOnRecycleViewItemClickListener(this);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
         recyclerView.addItemDecoration(new DividerGridItemDecoration(mContext));
-        recyclerView.setAdapter(mAdapter);
-
-
-        Picasso.with(mContext)
+        recyclerView.setAdapter(iPersonal.getAdapter(mContext, this));
+        Glide.with(mContext)
                 .load(R.mipmap.ic_launcher)
-                .transform(new CropCircleTransformation())
+                .bitmapTransform(new CropCircleTransformation(mContext))
+                .override(70, 70)
                 .into(imgPersonalIcon);
+
+//        ImageLoaderHelper.loadImage(mContext, R.mipmap.ic_launcher, imgPersonalIcon, new CropCircleTransformation(mContext));
     }
 
     @Override
@@ -109,6 +108,8 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
         super.onDestroy();
         iPersonal.release();
         iPersonal = null;
+        RefWatcher refWatcher = BaseApplication.refWatcher(getActivity());
+        refWatcher.watch(this);
     }
 
 

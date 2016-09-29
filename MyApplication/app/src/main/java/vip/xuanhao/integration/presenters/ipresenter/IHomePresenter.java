@@ -2,6 +2,9 @@ package vip.xuanhao.integration.presenters.ipresenter;
 
 import java.util.List;
 
+import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.adapters.HomeAdapter;
+import vip.xuanhao.integration.views.adapters.HomeContentListAdapter;
 import vip.xuanhao.integration.views.adapters.HorizontalPagerAdapter;
 
 /**
@@ -17,4 +20,10 @@ public interface IHomePresenter extends IGodPresenter {
     int getBannerDataSize();
 
     void onItemPageClick(int pos);
+
+    HomeContentListAdapter getContentListAdapter();
+
+    HomeAdapter getHomeAdapter(IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener);
+
+    void onItemClick(int position);
 }

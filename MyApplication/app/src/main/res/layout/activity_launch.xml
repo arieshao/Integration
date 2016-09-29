@@ -26,28 +26,28 @@
         android:background="@mipmap/ic_launcher" />
 
 
-    <com.gigamole.navigationtabbar.ntb.NavigationTabBar
-        android:id="@+id/ntb"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        app:ntb_active_color="#fff"
-        app:ntb_animation_duration="400"
-        app:ntb_badge_bg_color="#ffff0000"
-        app:ntb_badge_gravity="top"
-        app:ntb_badge_position="right"
-        app:ntb_badge_size="10sp"
-        app:ntb_badge_title_color="#ffffffff"
-        app:ntb_badge_use_typeface="true"
-        app:ntb_badged="true"
-        app:ntb_corners_radius="10dp"
-        app:ntb_inactive_color="#000"
-        app:ntb_scaled="true"
-        app:ntb_swiped="true"
-        app:ntb_tinted="true"
-        app:ntb_title_mode="all"
-        app:ntb_title_size="10sp"
-        app:ntb_titled="true"
-        app:ntb_typeface="fonts/custom_typeface.ttf" />
+    <!--<com.gigamole.navigationtabbar.ntb.NavigationTabBar-->
+        <!--android:id="@+id/ntb"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--app:ntb_active_color="#fff"-->
+        <!--app:ntb_animation_duration="400"-->
+        <!--app:ntb_badge_bg_color="#ffff0000"-->
+        <!--app:ntb_badge_gravity="top"-->
+        <!--app:ntb_badge_position="right"-->
+        <!--app:ntb_badge_size="10sp"-->
+        <!--app:ntb_badge_title_color="#ffffffff"-->
+        <!--app:ntb_badge_use_typeface="true"-->
+        <!--app:ntb_badged="true"-->
+        <!--app:ntb_corners_radius="10dp"-->
+        <!--app:ntb_inactive_color="#000"-->
+        <!--app:ntb_scaled="true"-->
+        <!--app:ntb_swiped="true"-->
+        <!--app:ntb_tinted="true"-->
+        <!--app:ntb_title_mode="all"-->
+        <!--app:ntb_title_size="10sp"-->
+        <!--app:ntb_titled="true"-->
+        <!--app:ntb_typeface="fonts/custom_typeface.ttf" />-->
 
 </RelativeLayout>

@@ -28,10 +28,6 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmList;
-import io.realm.RealmQuery;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -41,8 +37,6 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.model.domain.Classes;
-import vip.xuanhao.integration.model.domain.Student;
 
 public class LaunchActivity extends AppCompatActivity {
 
@@ -340,7 +334,7 @@ public class LaunchActivity extends AppCompatActivity {
         return dataSourceFromDb;
     }
 
-    private void test13B() {
+  /*  private void test13B() {
 // Create a RealmConfiguration that saves the Realm file in the app's "files" directory.
         RealmConfiguration realmConfig = new RealmConfiguration.Builder(this).build();
         Realm.setDefaultConfiguration(realmConfig);
@@ -388,7 +382,7 @@ public class LaunchActivity extends AppCompatActivity {
                         Logger.w(integer.toString());
                     }
                 });
-    }
+    }*/
 
     private void test12() {
         /**

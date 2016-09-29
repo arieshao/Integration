@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'realm-android'
+//apply plugin: 'realm-android'
 apply plugin: 'android-apt'
 
 android {
@@ -44,14 +44,13 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:design:23.4.0'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.trello:rxlifecycle:0.6.1'
     compile 'com.trello:rxlifecycle-components:0.6.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'jp.wasabeef:picasso-transformations:2.1.0'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     compile 'com.orhanobut:logger:1.15'
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
@@ -68,7 +67,6 @@ dependencies {
     compile 'com.facebook.stetho:stetho:1.3.1'
     compile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.3'
     compile 'com.jakewharton:butterknife:8.2.1'
     compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
@@ -82,18 +80,25 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 //    compile 'com.github.devlight.navigationtabbar:navigationtabbar:1.2.5' //这个tab 有个坑.不能禁用ViewPager滑动动画
-    compile project(':libs-release')
+
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.bigkoo:convenientbanner:2.0.5' // banner
-
-    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.hackware1993:MagicIndicator:1.4.0'
     compile 'com.andkulikov:transitionseverywhere:1.6.9'
+
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
-    compile project(':blurlibrary')
+//    compile 'com.squareup.picasso:picasso:2.5.2'
+//    compile 'jp.wasabeef:picasso-transformations:2.1.0'
+
     compile 'com.github.devlight:infinitecycleviewpager:1.0.2' //比较牛逼的那个Viewpager(横竖都能滚动)
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+
+    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    compile project(':blurlibrary')
+    compile project(':libs-release')
 }

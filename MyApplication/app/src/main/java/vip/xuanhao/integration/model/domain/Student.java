@@ -1,19 +1,16 @@
 package vip.xuanhao.integration.model.domain;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-
 /**
  * Created by Xuanhao on 2016/7/8.
  */
 
-public class Student extends RealmObject {
+public class Student{//} extends RealmObject {
 
 
     private String name;
     private String id;
     private String age;
-    private RealmList<Classes> classes;
+//    private RealmList<Classes> classes;
 
 
 
@@ -42,11 +39,11 @@ public class Student extends RealmObject {
         this.age = age;
     }
 
-    public RealmList<Classes> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(RealmList<Classes> classes) {
-        this.classes = classes;
-    }
+//    public RealmList<Classes> getClasses() {
+//        return classes;
+//    }
+//
+//    public void setClasses(RealmList<Classes> classes) {
+//        this.classes = classes;
+//    }
 }

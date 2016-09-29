@@ -23,6 +23,11 @@ public class HomeContentListAdapter extends BaseAdapter {
     private Context mContext;
     private List<String> strings;
     private LayoutInflater mInflater;
+    private static final int TYPE_VIDEO = 1;
+    private static final int TYPE_NORMAL = 2;
+
+    private int itemType;
+
 
     public HomeContentListAdapter(Context mContext, List<String> strings) {
         this.mContext = mContext;
@@ -46,31 +51,48 @@ public class HomeContentListAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 2;
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (position == 0)
+//            return TYPE_VIDEO;
+//        else
+//            return TYPE_NORMAL;
+//    }
+//
+//    @Override
+//    public int getViewTypeCount() {
+//        return 2;
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.home_referee, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            viewHolder.bindData(strings.get(position));
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
+        VideoViewHolder videoViewHolder;
+        PostViewHolder postViewHolder;
+//        itemType = getItemViewType(position);
+//        switch (itemType) {
+//            case TYPE_VIDEO:
+//                if (convertView == null) {
+//                    convertView = mInflater.inflate(R.layout.home_referee, null, false);
+//                    videoViewHolder = new VideoViewHolder(convertView);
+//                    convertView.setTag(videoViewHolder);
+//                } else {
+//                    videoViewHolder = (VideoViewHolder) convertView.getTag();
+//                }
+//                break;
+//            case TYPE_NORMAL:
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.home_posts, parent, false);
+                    postViewHolder = new PostViewHolder(convertView);
+                    convertView.setTag(postViewHolder);
+                } else {
+                    postViewHolder = (PostViewHolder) convertView.getTag();
+                }
+//                break;
+//        }
         return convertView;
     }
 
-    static class ViewHolder {
+    static class VideoViewHolder {
         @BindView(R.id.img_home_video_01)
         ImageView imgHomeVideo01;
         @BindView(R.id.img_home_video_02)
@@ -82,7 +104,30 @@ public class HomeContentListAdapter extends BaseAdapter {
         @BindView(R.id.img_home_video_more)
         TextView imgHomeVideoMore;
 
-        ViewHolder(View view) {
+        VideoViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+
+        public void bindData(String strings) {
+
+        }
+    }
+
+    static class PostViewHolder {
+        @BindView(R.id.tv_home_post_title)
+        TextView tvHomePostTitle;
+        @BindView(R.id.tv_home_post_type)
+        TextView tvHomePostType;
+        @BindView(R.id.img_posts_01)
+        ImageView imgPosts01;
+        @BindView(R.id.tv_posts_readcount)
+        TextView tvPostsReadcount;
+        @BindView(R.id.img_posts_02)
+        ImageView imgPosts02;
+        @BindView(R.id.img_posts_03)
+        ImageView imgPosts03;
+
+        PostViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
 
