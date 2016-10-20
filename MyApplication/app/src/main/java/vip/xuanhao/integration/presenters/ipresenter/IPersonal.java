@@ -1,6 +1,7 @@
 package vip.xuanhao.integration.presenters.ipresenter;
 
 import android.content.Context;
+import android.view.View;
 
 import java.util.List;
 
@@ -53,4 +54,6 @@ public interface IPersonal extends IGodPresenter {
      */
 
     PersonalAdapter getAdapter(Context mContext, IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener);
+
+    void onItemClick(Context mContext, View view, int position);
 }

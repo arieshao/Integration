@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.views.adapters.RecommAdapter;
 
 /**
  * Created by Xuanhao on 2016/8/2.

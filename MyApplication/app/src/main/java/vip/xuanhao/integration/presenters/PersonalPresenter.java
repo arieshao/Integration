@@ -1,6 +1,8 @@
 package vip.xuanhao.integration.presenters;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -66,6 +68,11 @@ public class PersonalPresenter implements IPersonal {
         personalAdapter = new PersonalAdapter(mContext, getModelData());
         personalAdapter.setiOnRecycleViewItemClickListener(iOnRecycleViewItemClickListener);
         return personalAdapter;
+    }
+
+    @Override
+    public void onItemClick(Context mContext, View view, int position) {
+        Toast.makeText(mContext, "" + position, Toast.LENGTH_SHORT).show();
     }
 
 

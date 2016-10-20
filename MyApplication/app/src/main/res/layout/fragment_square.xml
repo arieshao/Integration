@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ybao.pullrefreshview.layout.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-    <vip.xuanhao.integration.views.ui.ExpandHeaderView
-        android:id="@+id/square_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-    <vip.xuanhao.integration.views.ui.ExpandFooterView
-        android:id="@+id/square_footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:id="@+id/lv_square_content"
+    <com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:cacheColorHint="@null"
-        android:divider="#ccc"
-        android:dividerHeight="1px" />
+        android:orientation="vertical">
 
-</com.ybao.pullrefreshview.layout.PullRefreshLayout>
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent" />
+
+        <com.daprlabs.aaron.swipedeck.SwipeDeck
+            android:id="@+id/swipe_deck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingBottom="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="40dp"
+            swipedeck:card_spacing="15dp"
+            swipedeck:max_visible="3"
+            swipedeck:render_above="false" />
+    </com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout>
+
+</LinearLayout>

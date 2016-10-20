@@ -1,4 +1,4 @@
-package vip.xuanhao.integration.views.fragments;
+package vip.xuanhao.integration.views.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

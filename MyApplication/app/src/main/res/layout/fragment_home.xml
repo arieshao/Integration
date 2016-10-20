@@ -20,7 +20,7 @@
             app:contentScrim="#33475f"
             app:expandedTitleTextAppearance="@style/TransparentText"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:title="推荐">
+            app:title="@string/home_recommend">
 
             <include
                 layout="@layout/banner_layout"
@@ -47,6 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:nestedScrollingEnabled="true" />-->
+
+
+        <vip.xuanhao.integration.views.ui.NormalHeaderView
+            android:id="@+id/home_refresh_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rec_home_content"

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.squareup.leakcanary.RefWatcher;
@@ -115,6 +114,6 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(mContext, "" + position, Toast.LENGTH_SHORT).show();
+        iPersonal.onItemClick(mContext, view, position);
     }
 }

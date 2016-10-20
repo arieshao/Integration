@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
+import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/19.
@@ -13,12 +14,8 @@ import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 
 public class SquarePresenter implements ISquarePresenter {
 
-
-    private List<String> dataSource = new ArrayList<>();
-
-
-    private int pageNum = 1;
-
+    private List<String> dataSource;
+    private SwipeDeckAdapter swipeDeckAdapter;
 
     @Override
     public boolean checkUser() {
@@ -37,28 +34,38 @@ public class SquarePresenter implements ISquarePresenter {
 
     @Override
     public void release() {
-        dataSource.clear();
-        dataSource = null;
     }
 
     @Override
     public List<String> getDataSource() {
+        if (dataSource == null)
+            dataSource = new ArrayList<>();
+        else
+            dataSource.clear();
+
+        getSquareMoreDataFromCache();
+
         return dataSource;
     }
 
 
     @Override
     public void getSquareDataFromNet() {
-        dataSource.clear();
-        for (int i = 0; i < 20; i++) {
-            dataSource.add("这是一页  " + i + "  条");
-        }
     }
 
     @Override
     public void getSquareMoreDataFromCache() {
-        for (int i = 0; i < 20; i++) {
-            dataSource.add("这是2页  " + i + "  条");
+        for (int i = 0; i < 10; i++) {
+            dataSource.add(i + "");
         }
+    }
+
+    @Override
+    public SwipeDeckAdapter getAdapter(Context mContext, List t) {
+        if (null == swipeDeckAdapter)
+            swipeDeckAdapter = new SwipeDeckAdapter(mContext, t);
+        else
+            swipeDeckAdapter.notifyDataSetChanged();
+        return swipeDeckAdapter;
     }
 }

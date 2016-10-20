@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.orhanobut.logger.Logger;
+import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
@@ -35,13 +36,14 @@ import vip.xuanhao.integration.utils.AppBarLayoutHelper;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IHomeView;
+import vip.xuanhao.integration.views.ui.NormalHeaderView;
 import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.OnPageChangeListener, IOnRecycleViewItemClickListener {
+public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.OnPageChangeListener, BaseHeaderView.OnRefreshListener, IOnRecycleViewItemClickListener {
 
     @BindView(R.id.hicvp)
     HorizontalInfiniteCycleViewPager mCycleViewPager;
@@ -55,6 +57,8 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     CollapsingToolbarLayout ctlTitlebar;
     @BindView(R.id.rec_home_content)
     RecyclerView recHomeContent;
+    @BindView(R.id.home_refresh_header)
+    NormalHeaderView homeRefreshHeader;
 //    @BindView(R.id.listview_home_content)
 //    ListView listviewHomeContent;
 
@@ -104,14 +108,8 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     }
 
     private void initHeaderView() {
-
         recHomeContent.setLayoutManager(new LinearLayoutManager(mContext));
         recHomeContent.setAdapter(homePresenter.getHomeAdapter(this));
-//        ViewHolder viewHolder = new ViewHolder(mContext);
-//        listviewHomeContent.addHeaderView(viewHolder.getHeaderView());
-//        listviewHomeContent.setAdapter(homePresenter.getContentListAdapter());
-
-
     }
 
     private void initTestView() {
@@ -123,6 +121,7 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @Override
     public void initEvent() {
         mCycleViewPager.addOnPageChangeListener(this);
+        homeRefreshHeader.setOnRefreshListener(this);
         appbarlayoutHome.addOnOffsetChangedListener(new AppBarLayoutHelper.AppBarStateChangeListener() {
             @Override
             public void onOffsetChanged(int verticalOffset) {
@@ -191,6 +190,16 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @Override
     public void onItemClick(View view, int position) {
         homePresenter.onItemClick(position);
+    }
+
+    @Override
+    public void onRefresh(BaseHeaderView baseHeaderView) {
+        baseHeaderView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                homeRefreshHeader.stopRefresh();
+            }
+        }, 2000);
     }
 
 

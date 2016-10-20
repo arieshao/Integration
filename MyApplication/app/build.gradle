@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 //apply plugin: 'realm-android'
 apply plugin: 'android-apt'
+//apply plugin: 'com.tencent.tinker.patch'
 
 android {
     compileSdkVersion 23
@@ -16,7 +17,7 @@ android {
 
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
-//        multiDexEnabled = true
+        multiDexEnabled = true
 
     }
     buildTypes {
@@ -40,19 +41,55 @@ repositories {
     mavenCentral()  // GPUImage for Android
 }
 
+
+//tinkerPatch {
+//    buildConfig {
+//        tinkerId = getTinkerIdValue()
+//    }
+//}
+//
+//
+//def bakPath = file("${buildDir}/bakApk/")
+//
+//ext {
+//    //for some reason, you may want to ignore tinkerBuild, such as instant run debug build?
+//    tinkerEnabled = true
+//    //you should bak the following files
+//    //old apk file to build patch apk
+//    tinkerOldApkPath = "${bakPath}/app-debug-0919-20-32-57.apk"
+//    //proguard mapping file to build patch apk
+//    tinkerApplyMappingPath = "${bakPath}/"
+//    //resource R.txt to build patch apk, must input if there is resource changed
+//    tinkerApplyResourcePath = "${bakPath}/"
+//}
+//
+//def getTinkerIdValue() {
+//    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
+//}
+//
+//def gitSha() {
+//    return '2.10.0.windows.1'
+//}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.trello:rxlifecycle:0.6.1'
     compile 'com.trello:rxlifecycle-components:0.6.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     compile 'com.orhanobut:logger:1.15'
+
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -60,16 +97,16 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'cn.finalteam:okhttpfinal:2.0.7'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.google.dagger:dagger:2.4'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
+
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'com.facebook.stetho:stetho:1.3.1'
     compile 'com.facebook.stetho:stetho-okhttp3:1.3.1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.jakewharton:butterknife:8.2.1'
-    compile 'com.android.support:cardview-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
+
     testCompile 'junit:junit:4.12'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
@@ -98,7 +135,13 @@ dependencies {
     compile 'com.github.devlight:infinitecycleviewpager:1.0.2' //比较牛逼的那个Viewpager(横竖都能滚动)
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
 
-    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    //optional, help to generate the final application
+//    compile('com.tencent.tinker:tinker-android-anno:1.6.2')
+    //tinker's main Android lib
+//    compile('com.tencent.tinker:tinker-android-lib:1.6.2')
+
+    compile 'com.github.ybq:Android-SpinKit:1.1.0' //下拉刷新的loading效果
+    compile 'com.daprlabs.aaron:swipedeck:2.0.6' //仿探探左右滑动的效果
     compile project(':blurlibrary')
     compile project(':libs-release')
 }

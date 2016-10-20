@@ -5,34 +5,31 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.ybao.pullrefreshview.layout.BaseFooterView;
-import com.ybao.pullrefreshview.layout.BaseHeaderView;
+import com.daprlabs.aaron.swipedeck.SwipeDeck;
+import com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 import vip.xuanhao.integration.presenters.SquarePresenter;
+import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.ui.ExpandFooterView;
-import vip.xuanhao.integration.views.ui.ExpandHeaderView;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquareFragment extends BaseFragment implements BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener {
+public class SquareFragment extends BaseFragment {
 
-    @BindView(R.id.square_header)
-    ExpandHeaderView squareHeader;
-    @BindView(R.id.square_footer)
-    ExpandFooterView squareFooter;
-    @BindView(R.id.lv_square_content)
-    ListView mSquareContent;
 
+    @BindView(R.id.swipe_deck)
+    SwipeDeck swipeDeck;
+    @BindView(R.id.spin_kit)
+    SpinKitView spinKit;
+    @BindView(R.id.swipeLayout)
+    SwipeFrameLayout swipeLayout;
     private ISquarePresenter iSquarePresenter;
 
 
@@ -53,45 +50,26 @@ public class SquareFragment extends BaseFragment implements BaseHeaderView.OnRef
         initEvent();
     }
 
-    ArrayAdapter<String> adapter;
 
     @Override
     public void initView() {
-        adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, iSquarePresenter.getDataSource());
-        mSquareContent.setAdapter(adapter);
+        swipeDeck.setAdapter(iSquarePresenter.getAdapter(mContext, iSquarePresenter.getDataSource()));
     }
 
 
     @Override
     public void initEvent() {
-        squareHeader.setOnRefreshListener(this);
-        squareFooter.setOnLoadListener(this);
-    }
-
-    @Override
-    public void onLoad(BaseFooterView baseFooterView) {
-
-        baseFooterView.postDelayed(new Runnable() {
+        swipeDeck.setCallback(new SwipeDeck.SwipeDeckCallback() {
             @Override
-            public void run() {
-                iSquarePresenter.getSquareDataFromNet();
-                adapter.notifyDataSetChanged();
-                squareFooter.stopLoad();
+            public void cardSwipedLeft(long stableId) {
+
             }
-        }, 2000);
 
-    }
-
-
-    @Override
-    public void onRefresh(BaseHeaderView baseHeaderView) {
-        baseHeaderView.postDelayed(new Runnable() {
             @Override
-            public void run() {
-                iSquarePresenter.getSquareDataFromNet();
-                adapter.notifyDataSetChanged();
-                squareHeader.stopRefresh();
+            public void cardSwipedRight(long stableId) {
+
             }
-        }, 2000);
+        });
+
     }
 }

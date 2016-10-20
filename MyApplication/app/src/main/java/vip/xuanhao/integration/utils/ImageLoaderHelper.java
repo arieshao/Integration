@@ -8,6 +8,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+
 /**
  * Created by Xuanhao on 2016/9/22.
  * <p>
@@ -25,4 +27,8 @@ public class ImageLoaderHelper {
         Glide.with(mContext).load(resource).transform(transformation).into(view);
     }
 
+
+    public static void loadImage(@NotNull Context mContext, @NotNull File imageFile, @NotNull ImageView view) {
+
+    }
 }

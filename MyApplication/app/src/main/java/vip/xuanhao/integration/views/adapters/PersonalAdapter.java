@@ -84,7 +84,6 @@ public class PersonalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Glide.with(mContext)
                 .load(personalViewModel.getItemDrawable())
                 .override(70, 70)
-                .skipMemoryCache(true)
                 .into(holder.imgItemPersonal);
         holder.tvItemPersonal.setText(personalViewModel.getItemName());
     }
