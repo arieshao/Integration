@@ -11,14 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.app.BaseApplication;
 import vip.xuanhao.integration.presenters.PersonalPresenter;
 import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 import vip.xuanhao.integration.views.BaseFragment;
@@ -102,18 +100,15 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
         iPersonal.chooseIcon(mContext);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        iPersonal.release();
-        iPersonal = null;
-        RefWatcher refWatcher = BaseApplication.refWatcher(getActivity());
-        refWatcher.watch(this);
-    }
-
 
     @Override
     public void onItemClick(View view, int position) {
         iPersonal.onItemClick(mContext, view, position);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        iPersonal.release();
     }
 }

@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.orhanobut.logger.Logger;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +19,7 @@ public class MainTabHelper {
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
+                Logger.w(position + "");
                 viewPager.setCurrentItem(position);
             }
 

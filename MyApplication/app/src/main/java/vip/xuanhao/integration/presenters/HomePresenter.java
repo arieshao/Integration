@@ -52,8 +52,10 @@ public class HomePresenter implements IHomePresenter {
 
     @Override
     public void release() {
-        integers.clear();
-        integers = null;
+        if (integers != null) {
+            integers.clear();
+            integers = null;
+        }
         context = null;
         mAdapter = null;
         homeContentListAdapter = null;

@@ -50,4 +50,10 @@ public class GroupFragment extends BaseFragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, strings);
         lvTest.setAdapter(adapter);
     }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

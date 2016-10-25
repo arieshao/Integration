@@ -12,9 +12,7 @@ import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -32,7 +30,7 @@ import vip.xuanhao.integration.R;
 
 public class OneFragment extends Fragment {
 
-    @BindView(R.id.btn_download)
+//    @BindView(R.id.btn_download)
     Button btnDownload;
 
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -45,7 +43,7 @@ public class OneFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.btn_download)
+//    @OnClick(R.id.btn_download)
     public void onClick() {
 
         final String url = "http://www.baidu.com";

@@ -17,6 +17,7 @@ public class BaseFragment extends Fragment implements IBase {
 
     protected Context mContext;
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class BaseFragment extends Fragment implements IBase {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 
 
     @Override

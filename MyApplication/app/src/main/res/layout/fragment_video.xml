@@ -33,9 +33,17 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <vip.xuanhao.integration.views.ui.ExpandHeaderView
-            android:id="@+id/square_header"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rec_video_content"
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+        <vip.xuanhao.integration.views.ui.NormalHeaderView
+            android:id="@+id/video_refresh_header"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
 
@@ -44,13 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rec_video_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
 
     </com.ybao.pullrefreshview.layout.PullRefreshLayout>
 

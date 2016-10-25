@@ -20,8 +20,6 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @BindView(R.id.viewpager_main)
     UnScrollViewPager viewpagerMain;
-    //    @BindView(R.id.ntb_horizontal)
-//    NavigationTabBar ntbHorizontal;
     @BindView(R.id.main_tablayout)
     CommonTabLayout mTabLayout;
 

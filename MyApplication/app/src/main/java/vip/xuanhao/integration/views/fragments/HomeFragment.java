@@ -1,7 +1,6 @@
 package vip.xuanhao.integration.views.fragments;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,20 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
-import com.orhanobut.logger.Logger;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import integration.xuanhao.vip.blurlibrary.BlurTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.HomePresenter;
@@ -59,8 +54,6 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     RecyclerView recHomeContent;
     @BindView(R.id.home_refresh_header)
     NormalHeaderView homeRefreshHeader;
-//    @BindView(R.id.listview_home_content)
-//    ListView listviewHomeContent;
 
     private IHomePresenter homePresenter;
 
@@ -88,33 +81,31 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
 
     @Override
     public void initView() {
+
+        // 初始化banner
         mCycleViewPager.setAdapter(homePresenter.getBannerAdapter());
         mCycleViewPager.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
         mCycleViewPager.setScrollDuration(2500);
-        mCycleViewPager.setInterpolator(AnimationUtils.loadInterpolator(getContext(), android.R.anim.overshoot_interpolator));
+        mCycleViewPager.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.overshoot_interpolator));
         mCycleViewPager.setMediumScaled(false);
         mCycleViewPager.setMaxPageScale(0.8F);
         mCycleViewPager.setMinPageScale(0.5F);
         mCycleViewPager.setCenterPageScaleOffset(30.0F);
         mCycleViewPager.setMinPageScaleOffset(5.0F);
         mCycleViewPager.setMinPageScaleOffset(5.0F);
+
+        //初始化指示器
         ScaleCircleNavigator scaleCircleNavigator = new ScaleCircleNavigator(mContext);
         scaleCircleNavigator.setCircleCount(homePresenter.getBannerDataSize());
         scaleCircleNavigator.setNormalCircleColor(Color.LTGRAY);
         scaleCircleNavigator.setSelectedCircleColor(Color.WHITE);
         bannerMagicIndicator.setNavigator(scaleCircleNavigator);
-        initTestView();
-        initHeaderView();
+        initContent();
     }
 
-    private void initHeaderView() {
+    private void initContent() {
         recHomeContent.setLayoutManager(new LinearLayoutManager(mContext));
         recHomeContent.setAdapter(homePresenter.getHomeAdapter(this));
-    }
-
-    private void initTestView() {
-
-
     }
 
 
@@ -157,13 +148,6 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
         mCycleViewPager.stopAutoScroll();
     }
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        homePresenter.release();
-    }
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         bannerMagicIndicator.onPageScrolled(mCycleViewPager.getRealItem(), 0, 1);
@@ -172,7 +156,6 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @Override
     public void onPageSelected(int position) {
         bannerMagicIndicator.onPageSelected(mCycleViewPager.getRealItem());
-        Logger.w(mCycleViewPager.getRealItem() + "");
         Glide.with(mContext).load(homePresenter.getDataSource().get(mCycleViewPager.getRealItem()))
                 .transform(new BlurTransformation(mContext))
                 .crossFade()
@@ -197,49 +180,17 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
         baseHeaderView.postDelayed(new Runnable() {
             @Override
             public void run() {
+                //TODO  request data
                 homeRefreshHeader.stopRefresh();
             }
         }, 2000);
     }
 
 
-    class ViewHolder {
-        @BindView(R.id.btn_01)
-        Button btn01;
-        @BindView(R.id.btn_02)
-        Button btn02;
-        @BindView(R.id.btn_03)
-        Button btn03;
-        @BindView(R.id.btn_04)
-        Button btn04;
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-        View headerView;
-
-        ViewHolder(Context context) {
-            headerView = LayoutInflater.from(context).inflate(R.layout.layout_home_button, null, false);
-            ButterKnife.bind(this, headerView);
-        }
-
-        public View getHeaderView() {
-            return headerView;
-        }
-
-        @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04})
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btn_01:
-                    Toast.makeText(view.getContext(), "1", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btn_02:
-                    Toast.makeText(view.getContext(), "2", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btn_03:
-                    Toast.makeText(view.getContext(), "3", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.btn_04:
-                    Toast.makeText(view.getContext(), "4", Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
+        homePresenter.release();
     }
 }

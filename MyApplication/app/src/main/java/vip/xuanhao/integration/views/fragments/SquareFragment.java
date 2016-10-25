@@ -70,6 +70,12 @@ public class SquareFragment extends BaseFragment {
 
             }
         });
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        iSquarePresenter.release();
     }
 }
