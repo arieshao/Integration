@@ -1,7 +1,5 @@
 package vip.xuanhao.integration.presenters.ipresenter;
 
-import android.content.Context;
-
 import java.util.List;
 
 import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
@@ -10,7 +8,7 @@ import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
  * Created by Xuanhao on 2016/9/19.
  */
 
-public interface ISquarePresenter<T> extends IGodPresenter {
+public interface ISquarePresenter<T>  {
 
 
     List<String> getDataSource();
@@ -19,6 +17,6 @@ public interface ISquarePresenter<T> extends IGodPresenter {
 
     void getSquareMoreDataFromCache();
 
-    SwipeDeckAdapter getAdapter(Context mContext, List<T> t);
+    SwipeDeckAdapter getAdapter(List<T> t);
 
 }

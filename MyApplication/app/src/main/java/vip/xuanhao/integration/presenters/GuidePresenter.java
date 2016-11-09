@@ -16,7 +16,7 @@ import vip.xuanhao.integration.views.adapters.GuideAdapter;
  * Created by Xuanhao on 2016/9/22.
  */
 
-public class GuidePresenter implements IGuidePresenter {
+public class GuidePresenter extends GodPresenter implements IGuidePresenter {
 
 
     private Context mContext;

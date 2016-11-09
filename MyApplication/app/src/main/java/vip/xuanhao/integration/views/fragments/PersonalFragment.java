@@ -12,13 +12,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.PersonalPresenter;
-import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IPersonalView;
@@ -42,7 +43,8 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
     @BindView(rclyview_choose)
     RecyclerView recyclerView;
 
-    private IPersonal iPersonal;
+    @Inject
+    PersonalPresenter iPersonal;
 
 
     @Nullable
@@ -57,7 +59,7 @@ public class PersonalFragment extends BaseFragment implements IPersonalView, IOn
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        iPersonal = new PersonalPresenter();
+        getFragmentComponent().inject(this);
         initView();
 
     }

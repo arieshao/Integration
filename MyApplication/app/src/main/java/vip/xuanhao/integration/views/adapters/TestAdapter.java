@@ -1,4 +1,4 @@
-package vip.xuanhao.integration.views.fragments;
+package vip.xuanhao.integration.views.adapters;
 
 /**
  * Created by Xuanhao on 2016/8/8.

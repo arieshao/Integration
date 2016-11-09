@@ -1,39 +1,37 @@
 package vip.xuanhao.integration.presenters;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
+import vip.xuanhao.integration.views.Iviews.ISquareView;
 import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquarePresenter implements ISquarePresenter {
+public class SquarePresenter extends GodPresenter implements ISquarePresenter {
 
     private List<String> dataSource;
     private SwipeDeckAdapter swipeDeckAdapter;
 
-    @Override
-    public boolean checkUser() {
-        return false;
-    }
+    private Context mContext;
+    private ISquareView mISquareView;
 
-    @Override
-    public void onResume(Context mContext, String pageName) {
 
-    }
-
-    @Override
-    public void onPause(Context mContext, String pageName) {
-
-    }
-
-    @Override
-    public void release() {
+    @Inject
+    public SquarePresenter(@NotNull Fragment fragment) {
+        if (fragment instanceof ISquareView)
+            this.mISquareView = (ISquareView) fragment;
+        this.mContext = fragment.getActivity();
     }
 
     @Override
@@ -42,9 +40,7 @@ public class SquarePresenter implements ISquarePresenter {
             dataSource = new ArrayList<>();
         else
             dataSource.clear();
-
         getSquareMoreDataFromCache();
-
         return dataSource;
     }
 
@@ -61,7 +57,7 @@ public class SquarePresenter implements ISquarePresenter {
     }
 
     @Override
-    public SwipeDeckAdapter getAdapter(Context mContext, List t) {
+    public SwipeDeckAdapter getAdapter(List t) {
         if (null == swipeDeckAdapter)
             swipeDeckAdapter = new SwipeDeckAdapter(mContext, t);
         else

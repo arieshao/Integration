@@ -40,10 +40,9 @@
 
         </android.support.v7.widget.RecyclerView>
 
-
-        <vip.xuanhao.integration.views.ui.NormalHeaderView
-            android:id="@+id/video_refresh_header"
-            android:layout_width="wrap_content"
+        <vip.xuanhao.integration.views.ui.ExpandHeaderView
+            android:id="@+id/square_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 

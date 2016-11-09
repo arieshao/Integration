@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Process;
 import android.util.Log;
 
-import com.facebook.stetho.Stetho;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -16,6 +15,10 @@ import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.util.List;
 
+import vip.xuanhao.integration.di.components.BaseApplicationComponent;
+import vip.xuanhao.integration.di.components.DaggerBaseApplicationComponent;
+import vip.xuanhao.integration.di.modules.BaseModule;
+
 /**
  * Created by Xuanhao on 2016/6/30.
  */
@@ -23,20 +26,13 @@ import java.util.List;
 public class BaseApplication extends Application {
 
     private static final String TAG = BaseApplication.class.getSimpleName();
-
-
-    // user your appid the key.
     private static final String APP_ID = "2882303761517488535";
-    // user your appid the key.
     private static final String APP_KEY = "5121748823535";
 
+    private static BaseApplication INSTANCE;
 
     private RefWatcher refWatcher;
 
-    public static RefWatcher refWatcher(Context mContext) {
-        BaseApplication application = (BaseApplication) mContext.getApplicationContext();
-        return application.refWatcher;
-    }
 
     public BaseApplication() {
     }
@@ -44,19 +40,47 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        refWatcher = LeakCanary.install(this);
-//        MultiDex.install(this);  //方法超出限值
-        Logger.w("BaseApplication is onCreate");
+//      MultiDex.install(this);  //方法超出限值
+        initLogger();
+        initSelf();
+        initUmeng();
+        initLeakCanary();
+        initMiPush();
+    }
 
+    private void initLogger() {
+        Logger.init().hideThreadInfo();//初始化logger隐藏线程信息
+        Logger.w("initLogger is called");
+    }
+
+    private void initSelf() {
+        Logger.w("initSelf is called");
+        INSTANCE = this;
+    }
+
+
+    /**
+     * 初始化友盟统计
+     */
+    private void initUmeng() {
+        Logger.w("initUmeng is called");
         MobclickAgent.openActivityDurationTrack(false);//更改友盟默认统计方式.
         MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
+    }
 
-        Stetho.initializeWithDefaults(this);
+    private void initLeakCanary() {
+        Logger.w("initLeakCanary is called");
+        refWatcher = LeakCanary.install(this);
+    }
 
-        if (shouldInit()) {
+
+    /**
+     * 初始化小米推送
+     */
+    private void initMiPush() {
+        Logger.w("initMiPush is called");
+        if (shouldInit())
             MiPushClient.registerPush(this, APP_ID, APP_KEY);
-        }
-
         LoggerInterface newLogger = new LoggerInterface() {
 
             @Override
@@ -90,4 +114,25 @@ public class BaseApplication extends Application {
         return false;
     }
 
+    /**
+     * dagger2 di
+     *
+     * @return
+     */
+
+    private static BaseApplicationComponent applicationComponent;
+
+    public static BaseApplicationComponent getAppComponent() {
+        Logger.w("getAppComponent is called");
+        applicationComponent = DaggerBaseApplicationComponent
+                .builder()
+                .baseModule(new BaseModule(INSTANCE))
+                .build();
+
+        return applicationComponent;
+    }
+
+    public static RefWatcher refWatcher() {
+        return INSTANCE.refWatcher;
+    }
 }

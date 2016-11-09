@@ -12,7 +12,7 @@ import vip.xuanhao.integration.views.adapters.VideoAdapter;
  * Created by Xuanhao on 2016/9/28.
  */
 
-public interface IVideoPresenter<T> extends IGodPresenter {
+public interface IVideoPresenter<T>  {
 
     List<String> getDataSource();
 

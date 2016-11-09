@@ -10,18 +10,20 @@ import com.daprlabs.aaron.swipedeck.SwipeDeck;
 import com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout;
 import com.github.ybq.android.spinkit.SpinKitView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.SquarePresenter;
-import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 import vip.xuanhao.integration.views.BaseFragment;
+import vip.xuanhao.integration.views.Iviews.ISquareView;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquareFragment extends BaseFragment {
+public class SquareFragment extends BaseFragment implements ISquareView {
 
 
     @BindView(R.id.swipe_deck)
@@ -30,7 +32,8 @@ public class SquareFragment extends BaseFragment {
     SpinKitView spinKit;
     @BindView(R.id.swipeLayout)
     SwipeFrameLayout swipeLayout;
-    private ISquarePresenter iSquarePresenter;
+    @Inject
+    SquarePresenter iSquarePresenter;
 
 
     @Nullable
@@ -45,7 +48,7 @@ public class SquareFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        iSquarePresenter = new SquarePresenter();
+        getFragmentComponent().inject(this);
         initView();
         initEvent();
     }
@@ -53,7 +56,7 @@ public class SquareFragment extends BaseFragment {
 
     @Override
     public void initView() {
-        swipeDeck.setAdapter(iSquarePresenter.getAdapter(mContext, iSquarePresenter.getDataSource()));
+        swipeDeck.setAdapter(iSquarePresenter.getAdapter(iSquarePresenter.getDataSource()));
     }
 
 
@@ -75,7 +78,6 @@ public class SquareFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         iSquarePresenter.release();
     }
 }

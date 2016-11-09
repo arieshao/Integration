@@ -11,19 +11,26 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.presenters.GroupPresenter;
 import vip.xuanhao.integration.views.BaseFragment;
+import vip.xuanhao.integration.views.Iviews.IGroupView;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class GroupFragment extends BaseFragment {
+public class GroupFragment extends BaseFragment implements IGroupView {
 
     @BindView(R.id.lv_test)
     ListView lvTest;
+
+    @Inject
+    GroupPresenter groupPresenter;
 
     @Nullable
     @Override
@@ -36,7 +43,7 @@ public class GroupFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        getFragmentComponent().inject(this);
         initView();
     }
 

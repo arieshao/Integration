@@ -1,7 +1,6 @@
 package vip.xuanhao.integration.model.network.net;
 
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 import rx.Observable;
 
 /**
@@ -10,11 +9,10 @@ import rx.Observable;
 
 public interface WebApiService {
 
-    String BASE_URL = "";
+    String BASE_URL = "http://api.chaiche.chexun.com";
 
 
-    @FormUrlEncoded
-    @POST()
-    Observable<String> submit();
+    @GET("/chaiche/api/recommend/home")
+    Observable<String> getHomeData();
 
 }

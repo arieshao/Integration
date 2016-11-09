@@ -13,7 +13,7 @@ import vip.xuanhao.integration.views.adapters.PersonalAdapter;
  * Created by Xuanhao on 2016/9/14.
  */
 
-public interface IPersonal extends IGodPresenter {
+public interface IPersonalPresenter {
 
 
     /**

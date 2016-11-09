@@ -21,12 +21,13 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import integration.xuanhao.vip.blurlibrary.BlurTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.HomePresenter;
-import vip.xuanhao.integration.presenters.ipresenter.IHomePresenter;
 import vip.xuanhao.integration.utils.AppBarLayoutHelper;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
@@ -55,7 +56,8 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @BindView(R.id.home_refresh_header)
     NormalHeaderView homeRefreshHeader;
 
-    private IHomePresenter homePresenter;
+    @Inject
+    HomePresenter homePresenter;
 
     @Nullable
     @Override
@@ -68,7 +70,7 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        homePresenter = new HomePresenter(mContext);
+        getFragmentComponent().inject(this);
         initData();
         initView();
         initEvent();
@@ -190,7 +192,6 @@ public class HomeFragment extends BaseFragment implements IHomeView, ViewPager.O
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         homePresenter.release();
     }
 }

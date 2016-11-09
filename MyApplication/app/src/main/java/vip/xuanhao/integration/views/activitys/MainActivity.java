@@ -5,11 +5,12 @@ import android.support.annotation.Nullable;
 
 import com.flyco.tablayout.CommonTabLayout;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.MainPresenter;
-import vip.xuanhao.integration.presenters.exception.IMainPresenter;
 import vip.xuanhao.integration.utils.MainTabHelper;
 import vip.xuanhao.integration.views.BaseActivity;
 import vip.xuanhao.integration.views.Iviews.IMainView;
@@ -23,14 +24,15 @@ public class MainActivity extends BaseActivity implements IMainView {
     @BindView(R.id.main_tablayout)
     CommonTabLayout mTabLayout;
 
-    private IMainPresenter presenter;
+    @Inject
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter = new MainPresenter(this);
+        getActivityComponent().inject(this);
         initView();
         initEvent();
     }

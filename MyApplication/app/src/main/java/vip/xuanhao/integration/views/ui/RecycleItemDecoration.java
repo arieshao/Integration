@@ -1,4 +1,4 @@
-package vip.xuanhao.integration.views.fragments;
+package vip.xuanhao.integration.views.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -11,7 +11,7 @@ import vip.xuanhao.integration.views.adapters.HorizontalPagerAdapter;
  * Created by Xuanhao on 2016/9/20.
  */
 
-public interface IHomePresenter extends IGodPresenter {
+public interface IHomePresenter  {
 
     List<Integer> getDataSource();
 

@@ -11,26 +11,28 @@ import android.view.ViewGroup;
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.VideoPresenter;
-import vip.xuanhao.integration.presenters.ipresenter.IVideoPresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IVideoView;
 import vip.xuanhao.integration.views.ui.GridItemDecoration;
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class VideoFragment extends BaseFragment implements BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
+public class VideoFragment extends BaseFragment implements IVideoView, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
 
 
     @BindView(R.id.rec_video_content)
     RecyclerView recVideoContent;
-
-    private IVideoPresenter iVideoPresenter;
+    @Inject
+    VideoPresenter iVideoPresenter;
 
     @Nullable
     @Override
@@ -43,15 +45,13 @@ public class VideoFragment extends BaseFragment implements BaseHeaderView.OnRefr
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        iVideoPresenter = new VideoPresenter();
+        getFragmentComponent().inject(this);
         initView();
         initEvent();
-
     }
 
     @Override
     public void initView() {
-
         GridItemDecoration gridItemDecoration = new GridItemDecoration(16);
         recVideoContent.addItemDecoration(gridItemDecoration);
         recVideoContent.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));

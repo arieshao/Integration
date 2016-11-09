@@ -10,9 +10,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.AppTab;
-import vip.xuanhao.integration.presenters.exception.IMainPresenter;
+import vip.xuanhao.integration.presenters.ipresenter.IMainPresenter;
 import vip.xuanhao.integration.views.Iviews.IMainView;
 import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
 
@@ -20,7 +22,7 @@ import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
  * Created by Xuanhao on 2016/9/13.
  */
 
-public class MainPresenter implements IMainPresenter {
+public class MainPresenter extends GodPresenter implements IMainPresenter {
 
     private IMainView iMainView;
     private Context mContext;
@@ -32,6 +34,7 @@ public class MainPresenter implements IMainPresenter {
     private int tab_icon_p[] = {R.mipmap.home_p, R.mipmap.video_p, R.mipmap.commonty_p, R.mipmap.personal_p};
 
 
+    @Inject
     public MainPresenter(Activity activity) {
         if (activity instanceof Context)
             this.mContext = activity;
@@ -54,25 +57,5 @@ public class MainPresenter implements IMainPresenter {
             tabs.add(new AppTab(tab_title[i], tab_icon_p[i], tab_icon_n[i]));
         }
         return tabs;
-    }
-
-    @Override
-    public boolean checkUser() {
-        return false;
-    }
-
-    @Override
-    public void onResume(Context mContext, String pageName) {
-
-    }
-
-    @Override
-    public void onPause(Context mContext, String pageName) {
-
-    }
-
-    @Override
-    public void release() {
-
     }
 }

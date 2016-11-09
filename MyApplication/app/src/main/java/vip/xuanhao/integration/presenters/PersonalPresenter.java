@@ -1,28 +1,40 @@
 package vip.xuanhao.integration.presenters;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Toast;
-
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
-import vip.xuanhao.integration.presenters.ipresenter.IPersonal;
+import vip.xuanhao.integration.presenters.ipresenter.IPersonalPresenter;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IPersonalView;
 import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class PersonalPresenter implements IPersonal {
+public class PersonalPresenter extends GodPresenter implements IPersonalPresenter {
 
 
     private PersonalAdapter personalAdapter;
+
+    private IPersonalView mIPersonalView;
+    private Context mContext;
+
+    @Inject
+    public PersonalPresenter(Fragment fragment) {
+        if (fragment instanceof IPersonalView)
+            this.mIPersonalView = (IPersonalView) fragment;
+        this.mContext = fragment.getActivity();
+    }
 
     @Override
     public boolean cleanCache() {
@@ -76,23 +88,8 @@ public class PersonalPresenter implements IPersonal {
     }
 
 
-    @Override
-    public boolean checkUser() {
-        return false;
-    }
 
 
-    @Override
-    public void onResume(Context mContext, String pageName) {
-        MobclickAgent.onResume(mContext);
-        MobclickAgent.onPageStart(pageName);
-    }
-
-    @Override
-    public void onPause(Context mContext, String pageName) {
-        MobclickAgent.onPageEnd(pageName);
-        MobclickAgent.onPause(mContext);
-    }
 
     @Override
     public void release() {
