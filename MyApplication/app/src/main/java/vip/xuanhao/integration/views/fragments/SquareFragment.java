@@ -1,29 +1,25 @@
 package vip.xuanhao.integration.views.fragments;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.daprlabs.aaron.swipedeck.SwipeDeck;
 import com.daprlabs.aaron.swipedeck.layouts.SwipeFrameLayout;
 import com.github.ybq.android.spinkit.SpinKitView;
+import com.orhanobut.logger.Logger;
 
-import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.SquarePresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.Iviews.ISquareView;
+import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquareFragment extends BaseFragment implements ISquareView {
+public class SquareFragment extends BaseFragment<SquarePresenter> implements ISquareView {
 
 
     @BindView(R.id.swipe_deck)
@@ -32,31 +28,27 @@ public class SquareFragment extends BaseFragment implements ISquareView {
     SpinKitView spinKit;
     @BindView(R.id.swipeLayout)
     SwipeFrameLayout swipeLayout;
-    @Inject
-    SquarePresenter iSquarePresenter;
-
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View personalRootView = inflater.inflate(R.layout.fragment_square, container, false);
-        ButterKnife.bind(this, personalRootView);
-        return personalRootView;
-    }
 
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getFragmentComponent().inject(this);
-        initView();
-        initEvent();
-    }
+    public void initData() {
+//        presenter.getDataSource();
 
+    }
 
     @Override
     public void initView() {
-        swipeDeck.setAdapter(iSquarePresenter.getAdapter(iSquarePresenter.getDataSource()));
+
+        Logger.w("SquareFragment 's  initView method is running");
+
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            strings.add(i + "");
+        }
+
+        SwipeDeckAdapter swipeDeckAdapter = new SwipeDeckAdapter(getActivity(), strings);
+        swipeDeck.setAdapter(swipeDeckAdapter);
+//        swipeDeck.setAdapter(presenter.getAdapter());
     }
 
 
@@ -76,8 +68,19 @@ public class SquareFragment extends BaseFragment implements ISquareView {
     }
 
     @Override
+    public int getLayoutResId() {
+        return R.layout.fragment_square;
+    }
+
+    @Override
+    public void initInject() {
+        getFragmentComponent().inject(this);
+    }
+
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        iSquarePresenter.release();
+        presenter.release();
     }
 }

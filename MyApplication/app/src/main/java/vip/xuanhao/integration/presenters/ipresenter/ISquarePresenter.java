@@ -13,10 +13,8 @@ public interface ISquarePresenter<T>  {
 
     List<String> getDataSource();
 
-    void getSquareDataFromNet();
-
     void getSquareMoreDataFromCache();
 
-    SwipeDeckAdapter getAdapter(List<T> t);
+    SwipeDeckAdapter getAdapter();
 
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -53,12 +52,10 @@ public class SwipeDeckAdapter extends BaseAdapter {
         }
         //((TextView) v.findViewById(R.id.textView2)).setText(data.get(position));
         ImageView imageView = (ImageView) v.findViewById(R.id.offer_image);
-//            Picasso.with(context).load(R.mipmap.guide_bg_02).fit().centerCrop().into(imageView);
-
         Glide.with(context).load(R.mipmap.guide_bg_02).centerCrop().into(imageView);
-        TextView textView = (TextView) v.findViewById(R.id.sample_text);
+      /*  TextView textView = (TextView) v.findViewById(R.id.sample_text);
         String item = (String) getItem(position);
-        textView.setText(item);
+        textView.setText(item);*/
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override

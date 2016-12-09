@@ -23,7 +23,6 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-
         drawHorizontal(c, parent);
         drawVertical(c, parent);
 

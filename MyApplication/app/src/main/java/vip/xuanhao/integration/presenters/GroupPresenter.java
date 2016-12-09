@@ -7,25 +7,24 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
+import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.views.Iviews.IGroupView;
 
 /**
  * Created by Xuanhao on 2016/11/9.
  */
 
-public class GroupPresenter extends GodPresenter {
+public class GroupPresenter extends BasePresenter<IGroupView> {
 
 
     private Context mContext;
-    private IGroupView groupView;
+    private NetManager netManager;
 
 
     @Inject
-    public GroupPresenter(@NotNull Fragment fragment) {
-
-        if (fragment instanceof IGroupView)
-            this.groupView = (IGroupView) fragment;
+    public GroupPresenter(@NotNull Fragment fragment, NetManager netManager) {
         this.mContext = fragment.getActivity();
+        this.netManager = netManager;
     }
 
 }

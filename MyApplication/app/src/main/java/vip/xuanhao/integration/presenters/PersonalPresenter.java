@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
+import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.IPersonalPresenter;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IPersonalView;
@@ -21,7 +22,7 @@ import vip.xuanhao.integration.views.adapters.PersonalAdapter;
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class PersonalPresenter extends GodPresenter implements IPersonalPresenter {
+public class PersonalPresenter extends BasePresenter implements IPersonalPresenter {
 
 
     private PersonalAdapter personalAdapter;
@@ -30,7 +31,7 @@ public class PersonalPresenter extends GodPresenter implements IPersonalPresente
     private Context mContext;
 
     @Inject
-    public PersonalPresenter(Fragment fragment) {
+    public PersonalPresenter(Fragment fragment, NetManager netManager) {
         if (fragment instanceof IPersonalView)
             this.mIPersonalView = (IPersonalView) fragment;
         this.mContext = fragment.getActivity();
@@ -86,9 +87,6 @@ public class PersonalPresenter extends GodPresenter implements IPersonalPresente
     public void onItemClick(Context mContext, View view, int position) {
         Toast.makeText(mContext, "" + position, Toast.LENGTH_SHORT).show();
     }
-
-
-
 
 
     @Override

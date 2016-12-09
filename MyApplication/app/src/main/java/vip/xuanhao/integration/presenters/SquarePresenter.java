@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
 import vip.xuanhao.integration.views.Iviews.ISquareView;
 import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
@@ -18,20 +19,19 @@ import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquarePresenter extends GodPresenter implements ISquarePresenter {
+public class SquarePresenter extends BasePresenter<ISquareView> implements ISquarePresenter {
 
     private List<String> dataSource;
     private SwipeDeckAdapter swipeDeckAdapter;
 
     private Context mContext;
-    private ISquareView mISquareView;
 
+    private NetManager netManager;
 
     @Inject
-    public SquarePresenter(@NotNull Fragment fragment) {
-        if (fragment instanceof ISquareView)
-            this.mISquareView = (ISquareView) fragment;
+    public SquarePresenter(@NotNull Fragment fragment, NetManager netManager) {
         this.mContext = fragment.getActivity();
+        this.netManager = netManager;
     }
 
     @Override
@@ -46,10 +46,6 @@ public class SquarePresenter extends GodPresenter implements ISquarePresenter {
 
 
     @Override
-    public void getSquareDataFromNet() {
-    }
-
-    @Override
     public void getSquareMoreDataFromCache() {
         for (int i = 0; i < 10; i++) {
             dataSource.add(i + "");
@@ -57,9 +53,9 @@ public class SquarePresenter extends GodPresenter implements ISquarePresenter {
     }
 
     @Override
-    public SwipeDeckAdapter getAdapter(List t) {
+    public SwipeDeckAdapter getAdapter() {
         if (null == swipeDeckAdapter)
-            swipeDeckAdapter = new SwipeDeckAdapter(mContext, t);
+            swipeDeckAdapter = new SwipeDeckAdapter(mContext, getDataSource());
         else
             swipeDeckAdapter.notifyDataSetChanged();
         return swipeDeckAdapter;

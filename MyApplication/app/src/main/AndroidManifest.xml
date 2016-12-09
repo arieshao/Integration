@@ -28,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.activitys.GuideActivity"
+            android:name=".views.activitys.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/MainActivityStyle">
@@ -39,9 +39,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.activitys.MainActivity"
-            android:theme="@style/MainActivityStyle"
-            />
+        <activity
+            android:name=".views.activitys.MainActivity"
+            android:theme="@style/HomeTabStyle"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".views.activitys.GuideActivity"
+            android:theme="@style/MainActivityStyle" />
+        <activity
+            android:name=".views.activitys.DetailActivity"
+            android:theme="@style/MainActivityStyle" />
 
         <receiver android:name=".model.receivers.ConnectionReceiver">
             <intent-filter>

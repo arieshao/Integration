@@ -4,12 +4,12 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.umeng.analytics.MobclickAgent;
 import com.xiaomi.channel.commonutils.logger.LoggerInterface;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
@@ -40,7 +40,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//      MultiDex.install(this);  //方法超出限值
+        MultiDex.install(this);  //方法超出限值
         initLogger();
         initSelf();
         initUmeng();
@@ -50,11 +50,11 @@ public class BaseApplication extends Application {
 
     private void initLogger() {
         Logger.init().hideThreadInfo();//初始化logger隐藏线程信息
-        Logger.w("initLogger is called");
+        Logger.v("initLogger is called");
     }
 
     private void initSelf() {
-        Logger.w("initSelf is called");
+        Logger.v("initSelf is called");
         INSTANCE = this;
     }
 
@@ -63,13 +63,11 @@ public class BaseApplication extends Application {
      * 初始化友盟统计
      */
     private void initUmeng() {
-        Logger.w("initUmeng is called");
-        MobclickAgent.openActivityDurationTrack(false);//更改友盟默认统计方式.
-        MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
+        Logger.v("initUmeng is called");
     }
 
     private void initLeakCanary() {
-        Logger.w("initLeakCanary is called");
+        Logger.v("initLeakCanary is called");
         refWatcher = LeakCanary.install(this);
     }
 
@@ -78,7 +76,7 @@ public class BaseApplication extends Application {
      * 初始化小米推送
      */
     private void initMiPush() {
-        Logger.w("initMiPush is called");
+        Logger.v("initMiPush is called");
         if (shouldInit())
             MiPushClient.registerPush(this, APP_ID, APP_KEY);
         LoggerInterface newLogger = new LoggerInterface() {
@@ -123,14 +121,14 @@ public class BaseApplication extends Application {
     private static BaseApplicationComponent applicationComponent;
 
     public static BaseApplicationComponent getAppComponent() {
-        Logger.w("getAppComponent is called");
+        Logger.v("getAppComponent is called");
         applicationComponent = DaggerBaseApplicationComponent
                 .builder()
                 .baseModule(new BaseModule(INSTANCE))
                 .build();
-
         return applicationComponent;
     }
+
 
     public static RefWatcher refWatcher() {
         return INSTANCE.refWatcher;

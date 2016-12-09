@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#aadefe"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/color_primary_dark"
+            app:titleTextColor="@android:color/white" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.tencent.smtt.sdk.WebView
+                android:id="@+id/tencent_web"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+            <!--<android.support.v4.widget.DrawerLayout-->
+                <!--android:id="@+id/drawer_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
+
+
+                <!--<ListView-->
+                    <!--android:id="@+id/lv_menu"-->
+                    <!--android:layout_width="240dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="start"-->
+                    <!--android:background="@drawable/drawer_item_bg"-->
+                    <!--android:choiceMode="singleChoice"-->
+                    <!--android:divider="@null" />-->
+
+            <!--</android.support.v4.widget.DrawerLayout>-->
+        </FrameLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+

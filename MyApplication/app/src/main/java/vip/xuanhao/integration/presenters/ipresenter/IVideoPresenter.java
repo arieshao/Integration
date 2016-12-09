@@ -1,9 +1,6 @@
 package vip.xuanhao.integration.presenters.ipresenter;
 
-import android.content.Context;
 import android.view.View;
-
-import java.util.List;
 
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.adapters.VideoAdapter;
@@ -12,11 +9,11 @@ import vip.xuanhao.integration.views.adapters.VideoAdapter;
  * Created by Xuanhao on 2016/9/28.
  */
 
-public interface IVideoPresenter<T>  {
+public interface IVideoPresenter{
 
-    List<String> getDataSource();
+    void getDataSource();
 
-    VideoAdapter getAdapter(Context mContext, List<T> dataSource);
+    VideoAdapter getAdapter();
 
     void setListener(IOnRecycleViewItemClickListener listener);
 

@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.model.domain.ImageBean;
 
 /**
  * Created by GIGAMOLE on 7/27/16.
@@ -24,9 +25,9 @@ public class HorizontalPagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private List<Integer> imageSrc;
+    private List<ImageBean> imageSrc;
 
-    public HorizontalPagerAdapter(final Context context, List<Integer> imageSrc) {
+    public HorizontalPagerAdapter(final Context context, List<ImageBean> imageSrc) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.imageSrc = imageSrc;
@@ -71,9 +72,8 @@ public class HorizontalPagerAdapter extends PagerAdapter {
             ButterKnife.bind(this, view);
         }
 
-        public void setData(final int position, List<Integer> imageSrc, final Context mContext) {
-            Integer imgRes = imageSrc.get(position);
-            Glide.with(mContext).load(imgRes).into(imgBannerItem);
+        public void setData(final int position, List<ImageBean> imageSrc, final Context mContext) {
+            Glide.with(mContext).load(imageSrc.get(position).getUrl()).into(imgBannerItem);
 
             imgBannerItem.setOnClickListener(new View.OnClickListener() {
                 @Override

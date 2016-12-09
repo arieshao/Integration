@@ -104,7 +104,7 @@ public class PushReceiver extends PushMessageReceiver{
      */
     @Override
     public void onReceiveRegisterResult(Context context, MiPushCommandMessage message) {
-        Logger.w(TAG + "onReceiveRegisterResult" + message.toString());
+        Logger.v(TAG + "onReceiveRegisterResult" + message.toString());
         String command = message.getCommand();
         List<String> arguments = message.getCommandArguments();
         String cmdArg1 = ((arguments != null && arguments.size() > 0) ? arguments.get(0) : null);
@@ -124,7 +124,7 @@ public class PushReceiver extends PushMessageReceiver{
      */
     @Override
     public void onCommandResult(Context context, MiPushCommandMessage message) {
-        Logger.w(TAG + "onCommandResult" + message.toString());
+        Logger.v(TAG + "onCommandResult" + message.toString());
         String command = message.getCommand();
         List<String> arguments = message.getCommandArguments();
         String cmdArg1 = ((arguments != null && arguments.size() > 0) ? arguments.get(0) : null);

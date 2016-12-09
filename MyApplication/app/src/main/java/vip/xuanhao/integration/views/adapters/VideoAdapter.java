@@ -7,21 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.model.domain.ImageBean;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 
 /**
  * Created by Xuanhao on 2016/10/21.
  */
 
-public class VideoAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<T> dataSource;
+    private List<ImageBean> dataSource;
     private LayoutInflater mInflater;
 
     private IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener;
@@ -30,7 +33,7 @@ public class VideoAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.iOnRecycleViewItemClickListener = iOnRecycleViewItemClickListener;
     }
 
-    public VideoAdapter(Context mContext, List<T> dataSource) {
+    public VideoAdapter(Context mContext, List<ImageBean> dataSource) {
         this.mContext = mContext;
         this.dataSource = dataSource;
         mInflater = LayoutInflater.from(mContext);
@@ -57,6 +60,10 @@ public class VideoAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private void bandData(ViewHolder itemHolder, int position) {
+
+        Glide.with(mContext)
+                .load(dataSource.get(position).getUrl())
+                .into(itemHolder.imgVideoItem);
 
     }
 

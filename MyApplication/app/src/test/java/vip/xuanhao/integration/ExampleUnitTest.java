@@ -308,12 +308,13 @@ public class ExampleUnitTest {
                     public void call(String s) {
                         if (!s.equals("")) {
 //                            System.out.println("fromNet doOnNext call");
-                            System.out.println( s +"存入数据库");
+                            System.out.println(s + "存入数据库");
                         }
                     }
                 })
                 .subscribeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread());;
+                .subscribeOn(AndroidSchedulers.mainThread());
+        ;
 
         Observable.concat(fromDb, fromNet)
                 .subscribe(new Action1<String>() {
@@ -423,5 +424,25 @@ public class ExampleUnitTest {
     @Test
     public void dagger1() {
 
+        int k = 5 | 3;
+        System.out.print(k);
+    }
+
+    @Test
+    public void demo() {
+
+        Observable.timer(3, TimeUnit.SECONDS)
+                .map(new Func1<Long, String>() {
+                    @Override
+                    public String call(Long aLong) {
+                        return "a";
+                    }
+                })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String aLong) {
+                        System.out.print(aLong.toString());
+                    }
+                });
     }
 }

@@ -1,19 +1,16 @@
 package vip.xuanhao.integration.model.network.net;
 
+import android.content.Context;
 import android.os.Environment;
 
 import com.orhanobut.logger.BuildConfig;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import okhttp3.Cache;
-import okhttp3.Cookie;
-import okhttp3.CookieJar;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -31,21 +28,18 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class NetManager {
 
-    private static NetManager manager = null;
 
-    private NetManager() {
+    private Context mContext;
 
-    }
+    @Inject
+    public NetManager(Context mContext) {
+        initClient();
+        this.mContext = mContext;
+//        Logger.w(mContext.toString());
 
-    public static NetManager getInstance() {
-        if (manager == null) {
-            synchronized (NetManager.class) {
-                if (manager == null) {
-                    manager = new NetManager();
-                }
-            }
-        }
-        return manager;
+        File cacheDir = mContext.getCacheDir();
+
+//        Logger.w(cacheDir.getAbsolutePath());
     }
 
     /**
@@ -55,35 +49,38 @@ public class NetManager {
      */
     private OkHttpClient client;
 
-    private OkHttpClient getClent() {
+    private OkHttpClient initClient() {
+
+
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
         if (client == null) {
             synchronized (NetManager.class) {
                 if (client == null) {
                     // 指定缓存路径,缓存大小100Mb
-                    Cache cache = new Cache(new File(Environment.getDataDirectory(), "HttpCache"), 1024 * 1024 * 100);
+                    Cache cache = new Cache(new File(Environment.getExternalStorageDirectory(), "HttpCache"), 1024 * 1024 * 100);
                     client = new OkHttpClient.Builder()
                             .cache(cache)
                             .addInterceptor(loggingInterceptor)
-                            .retryOnConnectionFailure(true)
+                            .addNetworkInterceptor(new CacheInterceptor())
                             .connectTimeout(10, TimeUnit.SECONDS)// 连接超时时间设置
                             .readTimeout(10, TimeUnit.SECONDS) // 读取超时时间设置
-                            .cookieJar(new CookieJar() {// 这里我们使用host name作为cookie保存的key
-
-                                private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
-
-                                @Override
-                                public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                                    cookieStore.put(HttpUrl.parse(url.host()), cookies);
-                                }
-
-                                @Override
-                                public List<Cookie> loadForRequest(HttpUrl url) {
-                                    List<Cookie> cookies = cookieStore.get(HttpUrl.parse(url.host()));
-                                    return cookies != null ? cookies : new ArrayList<Cookie>();
-                                }
-                            })
+                            .retryOnConnectionFailure(true)
+//                            .cookieJar(new CookieJar() {// 这里我们使用host name作为cookie保存的key
+//
+//                                private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
+//
+//                                @Override
+//                                public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+//                                    cookieStore.put(HttpUrl.parse(url.host()), cookies);
+//                                }
+//
+//                                @Override
+//                                public List<Cookie> loadForRequest(HttpUrl url) {
+//                                    List<Cookie> cookies = cookieStore.get(HttpUrl.parse(url.host()));
+//                                    return cookies != null ? cookies : new ArrayList<Cookie>();
+//                                }
+//                            })
                             .build();
                 }
             }
@@ -102,7 +99,7 @@ public class NetManager {
     private Retrofit retrofitConfig(boolean isUseRxJava) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(WebApiService.BASE_URL)
-                .client(getClent())
+                .client(client)
                 .addConverterFactory(JacksonConverterFactory.create());
         if (isUseRxJava)
             builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
@@ -110,9 +107,24 @@ public class NetManager {
     }
 
 
+    public Retrofit getMTRetrofitConfig() {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(WebApiService.IMAGE_BASE_URL)
+                .client(client)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+        return builder.build();
+    }
+
+
     public WebApiService getWebApiService(boolean useRxJava) {
 
         return retrofitConfig(useRxJava).create(WebApiService.class);
+    }
+
+
+    public WebApiService getWebApiService() {
+
+        return getMTRetrofitConfig().create(WebApiService.class);
     }
 
 

@@ -8,7 +8,7 @@ import vip.xuanhao.integration.views.adapters.GuideAdapter;
  * Created by Xuanhao on 2016/9/22.
  */
 
-public interface IGuidePresenter extends IGodPresenter {
+public interface IGuidePresenter extends IBasePresenter {
 
     /**
      * 引导图片资源

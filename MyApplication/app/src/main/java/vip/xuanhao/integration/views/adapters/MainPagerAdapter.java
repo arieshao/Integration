@@ -4,10 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import vip.xuanhao.integration.views.fragments.CommunityFragment;
-import vip.xuanhao.integration.views.fragments.HomeFragment;
-import vip.xuanhao.integration.views.fragments.PersonalFragment;
-import vip.xuanhao.integration.views.fragments.VideoFragment;
+import java.util.List;
 
 /**
  * Created by Xuanhao on 2016/9/13.
@@ -16,40 +13,24 @@ import vip.xuanhao.integration.views.fragments.VideoFragment;
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
 
-    private static final int HOMEFRAGMENT = 0;
-    private static final int VIDEOFRAGMENT = 1;
-    private static final int COMMUNITYFRAGMENT = 2;
-    private static final int PERSONALFRAGMENT = 3;
+    private List<Fragment> fragments;
 
 
-    private static final int TOTLEPAGESIZE = 4;
-
-    public MainPagerAdapter(FragmentManager fm) {
+    public MainPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
+        this.fragments = fragments;
     }
 
 
     @Override
     public Fragment getItem(int position) {
 
-        switch (position) {
-            case PERSONALFRAGMENT:
-                return new PersonalFragment();
-            case COMMUNITYFRAGMENT:
-                return new CommunityFragment();
-            case VIDEOFRAGMENT:
-                return new VideoFragment();
-            case HOMEFRAGMENT:
-            default:
-                return new HomeFragment();
-        }
+        return fragments.get(position);
     }
-
-
 
 
     @Override
     public int getCount() {
-        return TOTLEPAGESIZE;
+        return fragments.size();
     }
 }

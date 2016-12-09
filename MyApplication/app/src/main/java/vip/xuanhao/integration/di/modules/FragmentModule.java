@@ -1,5 +1,6 @@
 package vip.xuanhao.integration.di.modules;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 
 import dagger.Module;
@@ -25,4 +26,13 @@ public class FragmentModule {
     public Fragment provideFragment() {
         return mFragment;
     }
+
+
+    @Provides
+    @FragmentScope
+    public Activity provideActivity() {
+        return mFragment.getActivity();
+    }
+
+
 }

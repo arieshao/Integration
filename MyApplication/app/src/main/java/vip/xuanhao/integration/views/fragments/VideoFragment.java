@@ -1,72 +1,69 @@
 package vip.xuanhao.integration.views.fragments;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.VideoPresenter;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IVideoView;
+import vip.xuanhao.integration.views.ui.ExpandFooterView;
+import vip.xuanhao.integration.views.ui.ExpandHeaderView;
 import vip.xuanhao.integration.views.ui.GridItemDecoration;
+
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class VideoFragment extends BaseFragment implements IVideoView, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
+public class VideoFragment extends BaseFragment<VideoPresenter> implements IVideoView, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
 
 
     @BindView(R.id.rec_video_content)
     RecyclerView recVideoContent;
-    @Inject
-    VideoPresenter iVideoPresenter;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View videoRootView = inflater.inflate(R.layout.fragment_video, container, false);
-        ButterKnife.bind(this, videoRootView);
-        return videoRootView;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getFragmentComponent().inject(this);
-        initView();
-        initEvent();
-    }
+    @BindView(R.id.square_header)
+    ExpandHeaderView headerView;
+    @BindView(R.id.square_footer)
+    ExpandFooterView footerView;
 
     @Override
     public void initView() {
-        GridItemDecoration gridItemDecoration = new GridItemDecoration(16);
+        GridItemDecoration gridItemDecoration = new GridItemDecoration(26);
         recVideoContent.addItemDecoration(gridItemDecoration);
         recVideoContent.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recVideoContent.setAdapter(iVideoPresenter.getAdapter(mContext, iVideoPresenter.getDataSource()));
+        recVideoContent.setAdapter(presenter.getAdapter());
     }
 
 
     @Override
     public void initData() {
+        Logger.w("initData method is Running");
+        presenter.getDataSource();
     }
 
 
     @Override
     public void initEvent() {
-        iVideoPresenter.setListener(this);
+        headerView.setOnRefreshListener(this);
+        footerView.setOnLoadListener(this);
+        presenter.setListener(this);
+    }
+
+    @Override
+    public int getLayoutResId() {
+        return R.layout.fragment_video;
+    }
+
+    @Override
+    public void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -74,9 +71,10 @@ public class VideoFragment extends BaseFragment implements IVideoView, BaseHeade
         baseFooterView.postDelayed(new Runnable() {
             @Override
             public void run() {
+                footerView.stopLoad();
             }
         }, 2000);
-
+        presenter.getDataSource();
     }
 
     @Override
@@ -84,18 +82,24 @@ public class VideoFragment extends BaseFragment implements IVideoView, BaseHeade
         baseHeaderView.postDelayed(new Runnable() {
             @Override
             public void run() {
+                headerView.stopRefresh();
             }
         }, 2000);
+        presenter.getDataSource();
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        iVideoPresenter.onItemClick(view, position);
+        presenter.onItemClick(view, position);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        iVideoPresenter.release();
+    }
+
+    @Override
+    public void updateUI() {
+        presenter.UpdateUI();
     }
 }

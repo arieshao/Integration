@@ -17,9 +17,8 @@
         <ImageView
             android:id="@+id/img_video_item"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/guide_bg" />
+            android:layout_height="150dp"
+            android:scaleType="fitXY" />
 
     </android.support.v7.widget.CardView>
 

@@ -20,8 +20,6 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.finalteam.okhttpfinal.FileDownloadCallback;
-import cn.finalteam.okhttpfinal.HttpRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -230,36 +228,4 @@ public class FiveFragment extends Fragment {
         }
     }
 
-
-    private void test() {
-        String url = "http://dd.shouji.com.cn/app/soft/2016/20160804/sp3515015756.apk";
-        File saveFile = new File("/sdcard/test/OkHttpFinalConfiguration.apk");
-
-        HttpRequest.download(url, saveFile, new FileDownloadCallback() {
-            @Override
-            public void onStart() {
-
-                progressDialog.setMessage("开始下载");
-            }
-
-            @Override
-            public void onProgress(int progress, long networkSpeed) {
-                progressDialog.setMessage(progress + "");
-
-            }
-
-            @Override
-            public void onFailure() {
-                progressDialog.setMessage("下载失败");
-                progressDialog.dismiss();
-            }
-
-            @Override
-            public void onDone() {
-
-                progressDialog.dismiss();
-            }
-        });
-
-    }
 }

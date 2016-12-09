@@ -1,5 +1,6 @@
 package vip.xuanhao.integration.presenters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -7,8 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.ipresenter.IGuidePresenter;
+import vip.xuanhao.integration.utils.PreferenceHelper;
 import vip.xuanhao.integration.views.activitys.MainActivity;
 import vip.xuanhao.integration.views.adapters.GuideAdapter;
 
@@ -16,8 +20,7 @@ import vip.xuanhao.integration.views.adapters.GuideAdapter;
  * Created by Xuanhao on 2016/9/22.
  */
 
-public class GuidePresenter extends GodPresenter implements IGuidePresenter {
-
+public class GuidePresenter extends BasePresenter implements IGuidePresenter {
 
     private Context mContext;
     private List<Integer> integers;
@@ -25,8 +28,13 @@ public class GuidePresenter extends GodPresenter implements IGuidePresenter {
     private Integer imageResources[] = {R.mipmap.guide_bg, R.mipmap.guide_bg_01, R.mipmap.guide_bg_02, R.mipmap.guide_bg_03, R.mipmap.guide_bg_04};
 
 
-    public GuidePresenter(Context mContext) {
-        this.mContext = mContext;
+    private PreferenceHelper preferenceHelper;
+
+
+    @Inject
+    public GuidePresenter(Activity activity, PreferenceHelper preferenceHelper) {
+        this.preferenceHelper = preferenceHelper;
+        this.mContext = activity;
     }
 
     @Override
@@ -51,30 +59,19 @@ public class GuidePresenter extends GodPresenter implements IGuidePresenter {
 
     @Override
     public void jump() {
+        preferenceHelper.saveAppPre(false);
         Intent intent = new Intent(mContext, MainActivity.class);
         mContext.startActivity(intent);
     }
 
-    @Override
-    public boolean checkUser() {
-        return false;
-    }
-
-    @Override
-    public void onResume(Context mContext, String pageName) {
-
-    }
-
-    @Override
-    public void onPause(Context mContext, String pageName) {
-
-    }
 
     @Override
     public void release() {
         mContext = null;
-        integers.clear();
-        integers = null;
+        if (integers == null) {
+            integers.clear();
+            integers = null;
+        }
         mAdapter = null;
         imageResources = null;
     }

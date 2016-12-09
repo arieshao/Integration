@@ -1,8 +1,8 @@
 package vip.xuanhao.integration.di.components;
 
 import dagger.Component;
-import vip.xuanhao.integration.di.scopes.FragmentScope;
 import vip.xuanhao.integration.di.modules.FragmentModule;
+import vip.xuanhao.integration.di.scopes.FragmentScope;
 import vip.xuanhao.integration.views.fragments.CommunityFragment;
 import vip.xuanhao.integration.views.fragments.GroupFragment;
 import vip.xuanhao.integration.views.fragments.HomeFragment;
@@ -17,6 +17,8 @@ import vip.xuanhao.integration.views.fragments.VideoFragment;
 @FragmentScope
 @Component(dependencies = BaseApplicationComponent.class, modules = FragmentModule.class)
 public interface FragmentComponent {
+
+
 
     void inject(HomeFragment homeFragment);
 

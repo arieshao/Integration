@@ -1,6 +1,5 @@
 package vip.xuanhao.integration.views.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,7 +37,6 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Func1;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.views.activitys.MActivity;
 
 /**
  * Created by Xuanhao on 2016/8/8.
@@ -113,8 +111,8 @@ public class TowFragment extends Fragment {
     @OnClick(R.id.btn_start)
     public void onClick() {
 
-        Intent intent = new Intent(getActivity(), MActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(getActivity(), MActivity.class);
+//        startActivity(intent);
 
        /* unSubscribe();
         subscription = login()

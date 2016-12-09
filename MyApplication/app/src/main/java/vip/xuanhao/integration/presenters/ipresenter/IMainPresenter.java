@@ -12,7 +12,7 @@ import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
  * Created by Xuanhao on 2016/9/22.
  */
 
-public interface IMainPresenter  {
+public interface IMainPresenter {
 
 
     MainPagerAdapter getPagerAdapter(FragmentManager fragmentManager);

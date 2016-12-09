@@ -1,18 +1,25 @@
 package vip.xuanhao.integration.views;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import rx.subscriptions.CompositeSubscription;
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.app.BaseApplication;
 import vip.xuanhao.integration.di.components.DaggerMainActivityComponent;
 import vip.xuanhao.integration.di.components.MainActivityComponent;
 import vip.xuanhao.integration.di.modules.MainModule;
+import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.common.Events;
 import vip.xuanhao.integration.utils.SystemUtils;
 
@@ -20,20 +27,39 @@ import vip.xuanhao.integration.utils.SystemUtils;
  * Created by Xuanhao on 2016/7/6.
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity implements IBase {
-
+public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatActivity implements IBase {
 
     protected boolean isConnection = false;
+    private Unbinder unbinder;
+    @Inject
+    public T presenter;
 
-    protected CompositeSubscription subscription;
-
+    private Activity mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+        setContentView(getLayoutResId());
+        unbinder = ButterKnife.bind(this);
+        setStatusBar();
     }
 
+
+     protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+    }
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initInject();
+        initialize();
+        if (presenter != null)
+            presenter.attach(this);
+    }
 
     @Subscribe
     public void receiverConnectionState(Events.ConnectionEvent event) {
@@ -41,8 +67,6 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBase 
     }
 
     public MainActivityComponent getActivityComponent() {
-
-
         return DaggerMainActivityComponent
                 .builder()
                 .baseApplicationComponent(BaseApplication.getAppComponent())
@@ -67,8 +91,18 @@ public abstract class BaseActivity extends RxAppCompatActivity implements IBase 
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
-        }
+        presenter.release();
+        unbinder.unbind();
+    }
+
+    public abstract void initInject();
+
+    public abstract int getLayoutResId();
+
+    public void initialize() {
+        getNetWroKType();
+        initData();
+        initView();
+        initEvent();
     }
 }
