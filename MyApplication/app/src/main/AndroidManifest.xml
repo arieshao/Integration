@@ -42,6 +42,7 @@
         <activity
             android:name=".views.activitys.MainActivity"
             android:theme="@style/HomeTabStyle"
+            android:windowSoftInputMode="stateHidden"
             android:launchMode="singleTask" />
         <activity
             android:name=".views.activitys.GuideActivity"

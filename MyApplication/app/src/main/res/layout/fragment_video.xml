@@ -2,19 +2,24 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#aaffce"
-    android:fitsSystemWindows="true"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:statusBarBackground="@color/color_primary_dark">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"></android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
             android:background="@color/color_primary_dark"
+            android:layout_height="?android:attr/actionBarSize"
             android:gravity="center"
             app:title="@null">
 
@@ -26,34 +31,33 @@
                 android:textColor="#ffffff" />
 
         </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
 
 
-    <com.ybao.pullrefreshview.layout.PullRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rec_video_content"
+        <com.ybao.pullrefreshview.layout.PullRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <vip.xuanhao.integration.views.ui.ExpandHeaderView
-            android:id="@+id/square_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <vip.xuanhao.integration.views.ui.ExpandFooterView
-            android:id="@+id/square_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rec_video_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <vip.xuanhao.integration.views.ui.ExpandHeaderView
+                android:id="@+id/square_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
-    </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+            <vip.xuanhao.integration.views.ui.ExpandFooterView
+                android:id="@+id/square_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+
+        </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

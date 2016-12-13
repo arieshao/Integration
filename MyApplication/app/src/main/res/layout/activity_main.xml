@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     android:orientation="vertical">
 
 
@@ -20,6 +21,10 @@
         app:tl_indicator_color="#669D55B8"
         app:tl_indicator_corner_radius="3dp"
         app:tl_indicator_height="?attr/actionBarSize"
+        app:tl_indicator_margin_bottom="3dp"
+        app:tl_indicator_margin_left="3dp"
+        app:tl_indicator_margin_right="3dp"
+        app:tl_indicator_margin_top="10dp"
         app:tl_textSelectColor="#9D55B8"
         app:tl_textUnselectColor="@color/color_primary_dark" />
 

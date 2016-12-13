@@ -6,7 +6,7 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="color_primary_dark">#CC33475f</color>
+    <color name="color_primary_dark">#33475f</color>
 
     <color name="drawer_item_bg_p">#e8e8e8</color>
     <color name="drawer_item_bg_n">#fffff9</color>

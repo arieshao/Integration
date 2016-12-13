@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
-import com.jaeger.library.StatusBarUtil;
 import com.orhanobut.logger.Logger;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
@@ -38,7 +37,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @BindView(R.id.home_root)
     View homeroot;
     private boolean isOpen = true;
-
     private boolean isVisable = false;
 
     private boolean isPref = false;
@@ -83,14 +81,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
                     case AppBarLayoutHelper.AppBarStateChangeListener.STATE_EXPANDED://open
                         isOpen = true;
                         convenientBanner.startTurning(3000);
-                        StatusBarUtil.setTranslucentForImageView(getActivity(), 0, null);
                         break;
                     case AppBarLayoutHelper.AppBarStateChangeListener.STATE_COLLAPSED:
                     case AppBarLayoutHelper.AppBarStateChangeListener.STATE_IDLE:
                         isOpen = false;
                         convenientBanner.stopTurning();
-//                        StatusBarUtil.setTranslucentForImageView(getActivity(), 0, homeroot);
-                        StatusBarUtil.setColor(getActivity(), getResources().getColor(R.color.color_primary_dark), 0);
                         break;
                 }
             }
@@ -107,9 +102,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
             else
                 convenientBanner.stopTurning();
 
-    }
-
-    private void controlBanner() {
     }
 
 

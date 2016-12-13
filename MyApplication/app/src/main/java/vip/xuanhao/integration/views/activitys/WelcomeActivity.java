@@ -2,8 +2,6 @@ package vip.xuanhao.integration.views.activitys;
 
 import android.widget.TextView;
 
-import com.jaeger.library.StatusBarUtil;
-
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.WelcomePresenter;
@@ -28,7 +26,8 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements I
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setTranslucentForImageView(this, 0, null);
+//        StatusBarUtil.setTranslucentForImageView(this, 0, null);
+//        StatusBarUtil.setTranslucent(this, 0);
     }
 
     @Override

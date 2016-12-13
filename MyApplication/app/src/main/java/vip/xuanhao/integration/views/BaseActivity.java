@@ -1,5 +1,6 @@
 package vip.xuanhao.integration.views;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,6 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.app.BaseApplication;
 import vip.xuanhao.integration.di.components.DaggerMainActivityComponent;
 import vip.xuanhao.integration.di.components.MainActivityComponent;
@@ -46,8 +46,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
     }
 
 
+    @TargetApi(19)
      protected void setStatusBar() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+         StatusBarUtil.setTransparent(this);
     }
 
 

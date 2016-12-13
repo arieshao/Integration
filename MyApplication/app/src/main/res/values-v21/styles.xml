@@ -17,6 +17,7 @@
 
     <style name="HomeTabStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorPrimary">#33475f</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

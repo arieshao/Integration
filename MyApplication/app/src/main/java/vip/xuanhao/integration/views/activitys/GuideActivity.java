@@ -140,6 +140,11 @@ public class GuideActivity extends BaseActivity<GuidePresenter> implements ViewP
         return R.layout.activity_guide;
     }
 
+    @Override
+    protected void setStatusBar() {
+//        StatusBarUtil.setTranslucentForImageView(this, 0, null);
+    }
+
     @OnClick({R.id.btn_jump, R.id.btn_guide})
     public void onClick(View view) {
         switch (view.getId()) {

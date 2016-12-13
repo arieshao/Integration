@@ -20,9 +20,9 @@ import vip.xuanhao.integration.presenters.ipresenter.IMainPresenter;
 import vip.xuanhao.integration.utils.PreferenceHelper;
 import vip.xuanhao.integration.views.Iviews.IMainView;
 import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
+import vip.xuanhao.integration.views.fragments.CommunityFragment;
 import vip.xuanhao.integration.views.fragments.HomeFragment;
 import vip.xuanhao.integration.views.fragments.PersonalFragment;
-import vip.xuanhao.integration.views.fragments.SquareFragment;
 import vip.xuanhao.integration.views.fragments.VideoFragment;
 
 /**
@@ -55,7 +55,7 @@ public class MainPresenter extends BasePresenter<IMainView> implements IMainPres
         fragments = new ArrayList<>(4);
         fragments.add(new HomeFragment());
         fragments.add(new VideoFragment());
-        fragments.add(new SquareFragment());
+        fragments.add(new CommunityFragment());
         fragments.add(new PersonalFragment());
     }
 
