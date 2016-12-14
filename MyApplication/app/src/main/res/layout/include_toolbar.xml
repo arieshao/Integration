@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar_allpage"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/color_primary_dark"
+    android:orientation="vertical"
+    app:layout_scrollFlags="scroll|enterAlways|snap"
+    app:titleTextColor="@android:color/white">
+
+</android.support.v7.widget.Toolbar>

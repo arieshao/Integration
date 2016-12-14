@@ -1,1 +1,1 @@
-include ':app', ':libs-release', ':blurlibrary', ':testdemo'
+include ':app', ':libs-release', ':blurlibrary'

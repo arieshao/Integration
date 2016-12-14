@@ -20,7 +20,7 @@ import vip.xuanhao.integration.di.components.DaggerMainActivityComponent;
 import vip.xuanhao.integration.di.components.MainActivityComponent;
 import vip.xuanhao.integration.di.modules.MainModule;
 import vip.xuanhao.integration.presenters.BasePresenter;
-import vip.xuanhao.integration.presenters.common.Events;
+import vip.xuanhao.integration.app.common.Events;
 import vip.xuanhao.integration.utils.SystemUtils;
 
 /**
@@ -47,10 +47,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
 
     @TargetApi(19)
-     protected void setStatusBar() {
-         StatusBarUtil.setTransparent(this);
+    protected void setStatusBar() {
+        StatusBarUtil.setTransparent(this);
     }
-
 
 
     @Override

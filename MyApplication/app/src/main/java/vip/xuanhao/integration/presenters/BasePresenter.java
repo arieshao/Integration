@@ -16,14 +16,14 @@ public class BasePresenter<T extends IBase> implements IBasePresenter<T> {
     private CompositeSubscription compositeSubscription;
 
 
-    public void addSubscriber(Subscription s) {
+    protected void addSubscriber(Subscription s) {
         if (compositeSubscription == null) {
             compositeSubscription = new CompositeSubscription();
         }
         compositeSubscription.add(s);
     }
 
-    public void unSubscriber() {
+    private void unSubscriber() {
         if (compositeSubscription != null) {
             compositeSubscription.unsubscribe();
         }

@@ -16,6 +16,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import vip.xuanhao.integration.model.network.net.apiservice.WebApiService;
+import vip.xuanhao.integration.model.network.net.apiservice.ZhiHuApiService;
 
 /**
  * Created by Xuanhao on 2016/6/30.
@@ -127,5 +129,22 @@ public class NetManager {
         return getMTRetrofitConfig().create(WebApiService.class);
     }
 
+
+    //__________________________________________________________
+
+    private Retrofit getZhiHuRetrofitConfig() {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(ZhiHuApiService.BASE_URL)
+                .client(client)
+                .addConverterFactory(JacksonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+        return builder.build();
+    }
+
+
+
+    public ZhiHuApiService getZhiHuApiService() {
+        return getZhiHuRetrofitConfig().create(ZhiHuApiService.class);
+    }
 
 }

@@ -16,8 +16,16 @@
     </style>
 
     <style name="HomeTabStyle" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimary">#33475f</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- DrawerArrowStyles -->
+    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/white</item>
     </style>
 </resources>

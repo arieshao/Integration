@@ -21,9 +21,9 @@ import vip.xuanhao.integration.utils.PreferenceHelper;
 import vip.xuanhao.integration.views.Iviews.IMainView;
 import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
 import vip.xuanhao.integration.views.fragments.CommunityFragment;
-import vip.xuanhao.integration.views.fragments.HomeFragment;
 import vip.xuanhao.integration.views.fragments.PersonalFragment;
 import vip.xuanhao.integration.views.fragments.VideoFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.ZhiHuFragment;
 
 /**
  * Created by Xuanhao on 2016/9/13.
@@ -36,9 +36,9 @@ public class MainPresenter extends BasePresenter<IMainView> implements IMainPres
     private PreferenceHelper preferenceHelper;
 
 
-    private String tab_title[] = {"首页", "视频", "社区", "我"};
-    private int tab_icon_n[] = {R.mipmap.home_n, R.mipmap.video_n, R.mipmap.commonty_n, R.mipmap.personal_n};
-    private int tab_icon_p[] = {R.mipmap.home_p, R.mipmap.video_p, R.mipmap.commonty_p, R.mipmap.personal_p};
+    private String tab_title[] = {"首页", "视频", "社区"}; //, "我"
+    private int tab_icon_n[] = {R.mipmap.home_n, R.mipmap.video_n, R.mipmap.commonty_n}; //, R.mipmap.personal_n
+    private int tab_icon_p[] = {R.mipmap.home_p, R.mipmap.video_p, R.mipmap.commonty_p}; //, R.mipmap.personal_p
 
     private List<Fragment> fragments;
 
@@ -53,7 +53,7 @@ public class MainPresenter extends BasePresenter<IMainView> implements IMainPres
 
     private void initPager() {
         fragments = new ArrayList<>(4);
-        fragments.add(new HomeFragment());
+        fragments.add(new ZhiHuFragment());
         fragments.add(new VideoFragment());
         fragments.add(new CommunityFragment());
         fragments.add(new PersonalFragment());

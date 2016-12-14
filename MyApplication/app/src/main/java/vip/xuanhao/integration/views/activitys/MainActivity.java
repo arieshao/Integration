@@ -1,21 +1,25 @@
 package vip.xuanhao.integration.views.activitys;
 
+import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.jaeger.library.StatusBarUtil;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.orhanobut.logger.Logger;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import butterknife.BindView;
+import rx.functions.Action1;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.common.Commons;
 import vip.xuanhao.integration.presenters.MainPresenter;
 import vip.xuanhao.integration.utils.MainTabHelper;
 import vip.xuanhao.integration.views.BaseActivity;
@@ -29,7 +33,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     UnScrollViewPager viewpagerMain;
     @BindView(R.id.main_tablayout)
     CommonTabLayout mTabLayout;
+    @BindView(R.id.toolbar_allpage)
+    Toolbar toolbar;
+
+    ActionBarDrawerToggle actionBarDrawerToggle;
     private Drawer drawer;
+    private View drawerContentView;
+
+    private LayoutInflater mInflater;
+
 
     @Override
     public void initInject() {
@@ -45,62 +57,95 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @Override
     @TargetApi(19)
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this,getResources().getColor(R.color.color_primary_dark),0);
+        StatusBarUtil.setColor(this, getResources().getColor(Commons.STATUSBARCOLOR), 0);
     }
 
     @Override
     public void initView() {
+        mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        toolbar.setTitle("新闻");
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+//        actionBarDrawerToggle = new ActionBarDrawerToggle(this, null, toolbar, R.string.btn_guide, R.string.btn_jump);
+//        actionBarDrawerToggle.syncState();
+
         viewpagerMain.setScrollable(false);
         viewpagerMain.setAdapter(presenter.getPagerAdapter(getSupportFragmentManager()));
         mTabLayout.setTabData(presenter.getTabData());
         viewpagerMain.setOffscreenPageLimit(presenter.getTabData().size());
         MainTabHelper.bind(viewpagerMain, mTabLayout);
 
+        drawerContentView = mInflater.inflate(R.layout.drawer_content, null, false);
+
+        initDrawerView(drawerContentView);
+
         drawer = new DrawerBuilder()
                 .withActivity(this)
+                .withDisplayBelowStatusBar(false)
                 .withTranslucentStatusBar(true)
+                .withCustomView(drawerContentView)
+                .withActionBarDrawerToggleAnimated(true)
                 .build();
-        drawer.getDrawerLayout().setStatusBarBackgroundColor(getResources().getColor(R.color.color_primary_dark));
+        drawer.getDrawerLayout().setStatusBarBackgroundColor(getResources().getColor(Commons.STATUSBARCOLOR));
+    }
+
+
+    Button btn_setting;
+
+    private void initDrawerView(View drawerContentView) {
+        btn_setting = (Button) drawerContentView.findViewById(R.id.btn_drawer_setting);
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
     }
 
     @Override
     public void initData() {
+        requestPermission();
+    }
 
+    private void requestPermission() {
+        RxPermissions.getInstance(this)
+                .request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Action1<Boolean>() {
+                    @Override
+                    public void call(Boolean aBoolean) {
+                        if (aBoolean) {
+                            //请求网络
+                        } else {
+                            //对话框提示设置权限
+                        }
+                    }
+                });
     }
 
     @Override
     public void initEvent() {
-
-    }
-
-
-    public static void resetFragmentView(Fragment fragment, Activity activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            View contentView = activity.findViewById(android.R.id.content);
-            if (contentView != null) {
-                ViewGroup rootView;
-                rootView = (ViewGroup) ((ViewGroup) contentView).getChildAt(0);
-                if (rootView.getPaddingTop() != 0) {
-                    rootView.setPadding(0, 0, 0, 0);
-                }
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewpagerMain.setCurrentItem(3, false);
             }
-            if (fragment.getView() != null)
-                fragment.getView().setPadding(0, getStatusBarHeight(activity), 0, 0);
-        }
+        });
     }
-
-    private static int getStatusBarHeight(Context context) {
-        // 获得状态栏高度
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        int dimensionPixelSize = context.getResources().getDimensionPixelSize(resourceId);
-
-        Logger.w(dimensionPixelSize + "O");
-        return dimensionPixelSize;
-    }
-
 
     @Override
     public void updateUI() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer != null && drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -9,6 +9,12 @@ import vip.xuanhao.integration.views.fragments.HomeFragment;
 import vip.xuanhao.integration.views.fragments.PersonalFragment;
 import vip.xuanhao.integration.views.fragments.SquareFragment;
 import vip.xuanhao.integration.views.fragments.VideoFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.DailyNewFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.HotFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.HotFragment2;
+import vip.xuanhao.integration.views.fragments.zhihu.SpecialFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.ThemeFragment;
+import vip.xuanhao.integration.views.fragments.zhihu.ZhiHuFragment;
 
 /**
  * Created by Xuanhao on 2016/11/4.
@@ -17,7 +23,6 @@ import vip.xuanhao.integration.views.fragments.VideoFragment;
 @FragmentScope
 @Component(dependencies = BaseApplicationComponent.class, modules = FragmentModule.class)
 public interface FragmentComponent {
-
 
 
     void inject(HomeFragment homeFragment);
@@ -32,5 +37,15 @@ public interface FragmentComponent {
 
     void inject(PersonalFragment personalFragment);
 
+    void inject(ZhiHuFragment zhiHuFragment);
 
+    void inject(DailyNewFragment dailyNewFragment);
+
+    void inject(ThemeFragment themeFragment);
+
+    void inject(SpecialFragment specialFragment);
+
+    void inject(HotFragment hotFragment);
+
+    void inject(HotFragment2 hotFragment2);
 }

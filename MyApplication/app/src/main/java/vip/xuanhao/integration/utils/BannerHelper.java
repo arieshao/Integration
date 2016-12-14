@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 
-import vip.xuanhao.integration.model.domain.ImageBean;
+import vip.xuanhao.integration.model.domain.DailyListBean;
 
 /**
  * Created by Xuanhao on 2016/12/2.
@@ -21,7 +21,7 @@ public class BannerHelper implements CBViewHolderCreator<BannerHelper.BannerHome
     }
 
 
-    class BannerHomeHolder implements Holder<ImageBean> {
+    class BannerHomeHolder implements Holder<DailyListBean.TopStoriesBean> {
 
         private ImageView imageView;
 
@@ -33,8 +33,8 @@ public class BannerHelper implements CBViewHolderCreator<BannerHelper.BannerHome
         }
 
         @Override
-        public void UpdateUI(Context context, int position, ImageBean imageBean) {
-            ImageLoaderHelper.loadImage(context, imageBean.getUrl(), imageView);
+        public void UpdateUI(Context context, int position, DailyListBean.TopStoriesBean topStoriesBean) {
+            ImageLoaderHelper.loadImage(context, topStoriesBean.getImage(), imageView);
 
         }
     }

@@ -3,7 +3,7 @@ package vip.xuanhao.integration.model.datasources;
 import org.jetbrains.annotations.NotNull;
 
 import rx.Observer;
-import vip.xuanhao.integration.model.network.net.WebApiService;
+import vip.xuanhao.integration.model.network.net.apiservice.WebApiService;
 
 /**
  * Created by Xuanhao on 2016/11/10.

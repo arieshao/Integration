@@ -5,32 +5,32 @@
     android:layout_height="match_parent"
     app:statusBarBackground="@color/color_primary_dark">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.design.widget.AppBarLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <android.support.v7.widget.Toolbar
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:background="@color/color_primary_dark"
-            android:layout_height="?android:attr/actionBarSize"
-            android:gravity="center"
-            app:title="@null">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="视频"
-                android:textColor="#ffffff" />
+        </android.support.design.widget.AppBarLayout>
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/color_primary_dark"
+                android:gravity="center"
+                app:title="@null">
 
-        </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="视频"
+                    android:textColor="#ffffff" />
+
+            </android.support.v7.widget.Toolbar>
+
 
 
         <com.ybao.pullrefreshview.layout.PullRefreshLayout

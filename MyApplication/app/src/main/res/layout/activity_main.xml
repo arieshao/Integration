@@ -2,16 +2,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="false">
 
-
-    <vip.xuanhao.integration.views.ui.UnScrollViewPager
-        android:id="@+id/viewpager_main"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+           <!-- <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_main"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/color_primary_dark"
+                app:layout_scrollFlags="scroll|snap|enterAlways" />-->
+
+            <include layout="@layout/include_toolbar"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <vip.xuanhao.integration.views.ui.UnScrollViewPager
+            android:id="@+id/viewpager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/main_tablayout"
@@ -27,5 +46,6 @@
         app:tl_indicator_margin_top="10dp"
         app:tl_textSelectColor="#9D55B8"
         app:tl_textUnselectColor="@color/color_primary_dark" />
+
 
 </LinearLayout>

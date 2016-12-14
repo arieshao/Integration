@@ -7,7 +7,7 @@ import android.text.TextUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
-import vip.xuanhao.integration.presenters.common.Events;
+import vip.xuanhao.integration.app.common.Events;
 import vip.xuanhao.integration.utils.SystemUtils;
 
 /**

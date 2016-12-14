@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/blurlibrary" />
             <option value="$PROJECT_DIR$/libs-release" />
-            <option value="$PROJECT_DIR$/testdemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

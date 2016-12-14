@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/img_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <com.ybao.pullrefreshview.layout.PullRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/zhihu_news_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <vip.xuanhao.integration.views.ui.ExpandHeaderView
+            android:id="@+id/zhihu_news_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <vip.xuanhao.integration.views.ui.ExpandFooterView
+            android:id="@+id/zhihu_news_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+
+
+</RelativeLayout>

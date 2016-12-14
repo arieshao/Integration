@@ -1,11 +1,9 @@
 package vip.xuanhao.integration.views.fragments;
 
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.orhanobut.logger.Logger;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
@@ -13,8 +11,6 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.HomePresenter;
-import vip.xuanhao.integration.utils.AppBarLayoutHelper;
-import vip.xuanhao.integration.utils.BannerHelper;
 import vip.xuanhao.integration.views.BaseFragment;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IHomeView;
@@ -26,16 +22,16 @@ import vip.xuanhao.integration.views.ui.NormalHeaderView;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeView, OnItemClickListener, BaseHeaderView.OnRefreshListener, IOnRecycleViewItemClickListener {
 
-    @BindView(R.id.convenientBanner)
-    ConvenientBanner convenientBanner;
-    @BindView(R.id.appbarlayout_home)
-    AppBarLayout appbarlayoutHome;
+//    @BindView(R.id.convenientBanner)
+//    ConvenientBanner convenientBanner;
+//    @BindView(R.id.appbarlayout_home)
+//    AppBarLayout appbarlayoutHome;
     @BindView(R.id.rec_home_content)
     RecyclerView recHomeContent;
     @BindView(R.id.home_refresh_header)
     NormalHeaderView homeRefreshHeader;
-    @BindView(R.id.home_root)
-    View homeroot;
+//    @BindView(R.id.home_root)
+//    View homeroot;
     private boolean isOpen = true;
     private boolean isVisable = false;
 
@@ -58,10 +54,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
      * 初始化banner
      */
     private void initBanner() {
-        convenientBanner.setPages(new BannerHelper(), presenter.getBannerDatas())
-                .setPageIndicator(new int[]{R.drawable.dot_n, R.drawable.dot_p})
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
-                .setOnItemClickListener(this);
+//        convenientBanner.setPages(new BannerHelper(), presenter.getBannerDatas())
+//                .setPageIndicator(new int[]{R.drawable.dot_n, R.drawable.dot_p})
+//                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
+//                .setOnItemClickListener(this);
     }
 
     private void initContent() {
@@ -74,33 +70,33 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @Override
     public void initEvent() {
         homeRefreshHeader.setOnRefreshListener(this);
-        appbarlayoutHome.addOnOffsetChangedListener(new AppBarLayoutHelper.AppBarStateChangeListener() {
-            @Override
-            public void onOffsetChanged(int verticalOffset) {
-                switch (verticalOffset) {
-                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_EXPANDED://open
-                        isOpen = true;
-                        convenientBanner.startTurning(3000);
-                        break;
-                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_COLLAPSED:
-                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_IDLE:
-                        isOpen = false;
-                        convenientBanner.stopTurning();
-                        break;
-                }
-            }
-        });
+//        appbarlayoutHome.addOnOffsetChangedListener(new AppBarLayoutHelper.AppBarStateChangeListener() {
+//            @Override
+//            public void onOffsetChanged(int verticalOffset) {
+//                switch (verticalOffset) {
+//                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_EXPANDED://open
+//                        isOpen = true;
+//                        convenientBanner.startTurning(3000);
+//                        break;
+//                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_COLLAPSED:
+//                    case AppBarLayoutHelper.AppBarStateChangeListener.STATE_IDLE:
+//                        isOpen = false;
+//                        convenientBanner.stopTurning();
+//                        break;
+//                }
+//            }
+//        });
     }
 
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isPref)
-            if (isVisibleToUser)
-                convenientBanner.startTurning(3000);
-            else
-                convenientBanner.stopTurning();
+//        if (isPref)
+//            if (isVisibleToUser)
+//                convenientBanner.startTurning(3000);
+//            else
+//                convenientBanner.stopTurning();
 
     }
 
