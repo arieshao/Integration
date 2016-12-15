@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,8 +13,6 @@ import android.widget.Button;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.jaeger.library.StatusBarUtil;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import butterknife.BindView;
@@ -35,9 +34,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     CommonTabLayout mTabLayout;
     @BindView(R.id.toolbar_allpage)
     Toolbar toolbar;
-
     ActionBarDrawerToggle actionBarDrawerToggle;
-    private Drawer drawer;
+    @BindView(R.id.drawer)
+    DrawerLayout drawer;
     private View drawerContentView;
 
     private LayoutInflater mInflater;
@@ -62,34 +61,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     @Override
     public void initView() {
+        setToolBar(toolbar, "新闻");
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.app_name);
+        actionBarDrawerToggle.syncState();
+        drawer.addDrawerListener(actionBarDrawerToggle);
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        toolbar.setTitle("新闻");
-        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-//        actionBarDrawerToggle = new ActionBarDrawerToggle(this, null, toolbar, R.string.btn_guide, R.string.btn_jump);
-//        actionBarDrawerToggle.syncState();
-
         viewpagerMain.setScrollable(false);
         viewpagerMain.setAdapter(presenter.getPagerAdapter(getSupportFragmentManager()));
         mTabLayout.setTabData(presenter.getTabData());
         viewpagerMain.setOffscreenPageLimit(presenter.getTabData().size());
         MainTabHelper.bind(viewpagerMain, mTabLayout);
-
         drawerContentView = mInflater.inflate(R.layout.drawer_content, null, false);
-
         initDrawerView(drawerContentView);
-
-        drawer = new DrawerBuilder()
-                .withActivity(this)
-                .withDisplayBelowStatusBar(false)
-                .withTranslucentStatusBar(true)
-                .withCustomView(drawerContentView)
-                .withActionBarDrawerToggleAnimated(true)
-                .build();
-        drawer.getDrawerLayout().setStatusBarBackgroundColor(getResources().getColor(Commons.STATUSBARCOLOR));
     }
 
 
@@ -142,8 +125,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     @Override
     public void onBackPressed() {
-        if (drawer != null && drawer.isDrawerOpen()) {
-            drawer.closeDrawer();
+        if (drawer != null && drawer.isDrawerOpen(findViewById(R.id.left_drawer))) {
+            drawer.closeDrawers();
         } else {
             super.onBackPressed();
         }

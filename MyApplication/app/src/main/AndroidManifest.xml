@@ -41,14 +41,22 @@
 
         <activity
             android:name=".views.activitys.MainActivity"
+            android:launchMode="singleTask"
             android:theme="@style/HomeTabStyle"
-            android:windowSoftInputMode="stateHidden"
-            android:launchMode="singleTask" />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".views.activitys.GuideActivity"
             android:theme="@style/MainActivityStyle" />
         <activity
             android:name=".views.activitys.DetailActivity"
+            android:theme="@style/MainActivityStyle" />
+
+        <activity
+            android:name=".views.activitys.zhihu.ThemeDipoleListActivity"
+            android:theme="@style/MainActivityStyle" />
+
+        <activity
+            android:name=".views.activitys.zhihu.SpecialDipoleActivity"
             android:theme="@style/MainActivityStyle" />
 
         <receiver android:name=".model.receivers.ConnectionReceiver">

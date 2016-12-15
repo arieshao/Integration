@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.IZhiHuPresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHUView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuView;
 import vip.xuanhao.integration.views.adapters.zhihu.ZhiHuPagerAdapter;
 import vip.xuanhao.integration.views.fragments.zhihu.DailyNewFragment;
 import vip.xuanhao.integration.views.fragments.zhihu.HotFragment2;
@@ -22,7 +22,7 @@ import vip.xuanhao.integration.views.fragments.zhihu.ThemeFragment;
  * Created by Xuanhao on 2016/12/13.
  */
 
-public class ZhiHuPresenter extends BasePresenter<IZhiHUView> implements IZhiHuPresenter {
+public class ZhiHuPresenter extends BasePresenter<IZhiHuView> implements IZhiHuPresenter {
 
 
     private NetManager netManager;

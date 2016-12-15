@@ -1,8 +1,10 @@
 package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ import vip.xuanhao.integration.presenters.ipresenter.zhihu.ISpecialPresenter;
 import vip.xuanhao.integration.utils.RxUtils;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialView;
+import vip.xuanhao.integration.views.activitys.zhihu.SpecialDipoleActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.SpecialAdapter;
 
 /**
@@ -86,7 +89,11 @@ public class SpecialPresenter extends BasePresenter<ISpecialView> implements ISp
         addSubscriber(subscription);
     }
 
-    public void onItemClick(View view, int position) {
-        Toast.makeText(view.getContext(), mList.get(position).getId(), Toast.LENGTH_SHORT).show();
+    public void onItemClick(Context mContext, View view, int position) {
+        Logger.w(mList.get(position).toString());
+        Intent intent = new Intent(mContext, SpecialDipoleActivity.class);
+        intent.putExtra("id", mList.get(position).getId());
+        intent.putExtra("name", mList.get(position).getName());
+        mContext.startActivity(intent);
     }
 }

@@ -7,13 +7,13 @@ import butterknife.BindView;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.ZhiHuPresenter;
 import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHUView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuView;
 
 /**
  * Created by Xuanhao on 2016/12/13.
  */
 
-public class ZhiHuFragment extends BaseFragment<ZhiHuPresenter> implements IZhiHUView {
+public class ZhiHuFragment extends BaseFragment<ZhiHuPresenter> implements IZhiHuView {
 
 
     @BindView(R.id.zhihu_tab)

@@ -4,6 +4,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.View;
 
 import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
@@ -16,11 +19,11 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import vip.xuanhao.integration.app.BaseApplication;
+import vip.xuanhao.integration.app.common.Events;
 import vip.xuanhao.integration.di.components.DaggerMainActivityComponent;
 import vip.xuanhao.integration.di.components.MainActivityComponent;
 import vip.xuanhao.integration.di.modules.MainModule;
 import vip.xuanhao.integration.presenters.BasePresenter;
-import vip.xuanhao.integration.app.common.Events;
 import vip.xuanhao.integration.utils.SystemUtils;
 
 /**
@@ -34,7 +37,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
     @Inject
     public T presenter;
 
-    private Activity mContext;
+    private Activity mContext = this;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +46,31 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
         setContentView(getLayoutResId());
         unbinder = ButterKnife.bind(this);
         setStatusBar();
+        getIntentData();
+
+        OtherSetting();
+    }
+
+    protected void OtherSetting() {
+
+    }
+
+
+    protected void setToolBar(Toolbar toolBar, String title) {
+        if (!TextUtils.isEmpty(title))
+            toolBar.setTitle(title);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    public void getIntentData() {
     }
 
 

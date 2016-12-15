@@ -2,8 +2,6 @@ package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 

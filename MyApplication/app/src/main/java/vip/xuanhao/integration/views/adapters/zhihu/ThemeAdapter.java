@@ -25,15 +25,16 @@ public class ThemeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private List<ThemeListBean.OthersBean> mList;// = new ArrayList<>();
     private LayoutInflater mInflater;
-
     private Context mContext;
+
 
     private IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener;
 
-    public ThemeAdapter(Context mContext, List<ThemeListBean.OthersBean> mList) {
+    public ThemeAdapter(Context mContext, List<ThemeListBean.OthersBean> mList , IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener) {
         this.mContext = mContext;
         this.mList = mList;
         this.mInflater = LayoutInflater.from(mContext);
+        this.iOnRecycleViewItemClickListener = iOnRecycleViewItemClickListener;
     }
 
 

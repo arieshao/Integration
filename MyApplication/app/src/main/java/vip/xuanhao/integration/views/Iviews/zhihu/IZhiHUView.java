@@ -6,5 +6,5 @@ import vip.xuanhao.integration.views.IBase;
  * Created by Xuanhao on 2016/12/13.
  */
 
-public interface IZhiHUView extends IBase {
+public interface IZhiHuView extends IBase {
 }

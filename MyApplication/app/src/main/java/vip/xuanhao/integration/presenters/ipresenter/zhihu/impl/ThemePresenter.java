@@ -1,6 +1,10 @@
 package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,9 @@ import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.IThemePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
+import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.IThemeView;
+import vip.xuanhao.integration.views.activitys.zhihu.ThemeDipoleListActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.ThemeAdapter;
 
 /**
@@ -36,9 +42,9 @@ public class ThemePresenter extends BasePresenter<IThemeView> implements IThemeP
     }
 
 
-    public ThemeAdapter getAdapter(Context mContext) {
+    public ThemeAdapter getAdapter(Context mContext, IOnRecycleViewItemClickListener iOnRecycleViewItemClickListener) {
         if (themeAdapter == null) {
-            themeAdapter = new ThemeAdapter(mContext, mList);
+            themeAdapter = new ThemeAdapter(mContext, mList, iOnRecycleViewItemClickListener);
         }
         return themeAdapter;
     }
@@ -84,6 +90,16 @@ public class ThemePresenter extends BasePresenter<IThemeView> implements IThemeP
         if (themeAdapter != null) {
             themeAdapter.notifyDataSetChanged();
         }
+    }
+
+
+    public void onItemClick(Context mContext, View v, int position) {
+        Intent intent = new Intent(mContext, ThemeDipoleListActivity.class);
+        intent.putExtra("id", mList.get(position).getId());
+        intent.putExtra("name", mList.get(position).getName());
+        mContext.startActivity(intent);
+
+        Logger.w(mList.get(position).toString());
     }
 
 

@@ -58,6 +58,6 @@ public class SpecialFragment extends ZhihuBaseFragment<SpecialPresenter> impleme
 
     @Override
     public void onItemClick(View view, int position) {
-
+        presenter.onItemClick(mContext,view,position);
     }
 }

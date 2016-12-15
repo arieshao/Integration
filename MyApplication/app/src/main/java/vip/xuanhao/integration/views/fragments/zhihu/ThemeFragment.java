@@ -29,7 +29,7 @@ public class ThemeFragment extends ZhihuBaseFragment<ThemePresenter> implements 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, 2);
         zhihuNewsContent.setLayoutManager(gridLayoutManager);
         zhihuNewsContent.setItemAnimator(new DefaultItemAnimator());
-        zhihuNewsContent.setAdapter(presenter.getAdapter(mContext));
+        zhihuNewsContent.setAdapter(presenter.getAdapter(mContext,this));
 
     }
 
@@ -50,6 +50,7 @@ public class ThemeFragment extends ZhihuBaseFragment<ThemePresenter> implements 
 
     @Override
     public void onItemClick(View view, int position) {
+       presenter.onItemClick(mContext,view,position);
 
     }
     @Override

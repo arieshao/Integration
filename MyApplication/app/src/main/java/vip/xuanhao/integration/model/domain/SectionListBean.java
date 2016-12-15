@@ -62,5 +62,15 @@ public class SectionListBean {
         public void setThumbnail(String thumbnail) {
             this.thumbnail = thumbnail;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "description='" + description + '\'' +
+                    ", id=" + id +
+                    ", name='" + name + '\'' +
+                    ", thumbnail='" + thumbnail + '\'' +
+                    '}';
+        }
     }
 }
