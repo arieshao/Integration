@@ -1,6 +1,7 @@
 package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuBaseView;
+import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.activitys.zhihu.SpecialDipoleActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.SpecialChildAdapter;
 
@@ -75,7 +77,6 @@ public class SpecialDipolePresenter extends BasePresenter<IZhiHuBaseView> {
 
 
     public void notifyUpdata() {
-
         if (specialChildAdapter != null) {
             specialChildAdapter.notifyDataSetChanged();
         }
@@ -90,7 +91,9 @@ public class SpecialDipolePresenter extends BasePresenter<IZhiHuBaseView> {
     }
 
     public void onItemClick(SpecialDipoleActivity specialDipoleActivity, View view, int position) {
-
+        Intent intent = new Intent(specialDipoleActivity, DetailActivity.class);
+        intent.putExtra("id", mList.get(position).getId());
+        specialDipoleActivity.startActivity(intent);
 
     }
 }

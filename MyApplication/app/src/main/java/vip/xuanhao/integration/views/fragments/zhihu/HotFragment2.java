@@ -3,7 +3,6 @@ package vip.xuanhao.integration.views.fragments.zhihu;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
@@ -49,9 +48,7 @@ public class HotFragment2 extends ZhihuBaseFragment<HotPresenter> implements IHo
 
     @Override
     public void onItemClick(View view, int position) {
-
-        Toast.makeText(mContext, "1111", Toast.LENGTH_SHORT).show();
-
+        presenter.onItemClick(mContext, view, position);
     }
 
     @Override

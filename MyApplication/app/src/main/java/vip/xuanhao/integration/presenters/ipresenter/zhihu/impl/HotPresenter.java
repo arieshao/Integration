@@ -1,6 +1,8 @@
 package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ import vip.xuanhao.integration.presenters.ipresenter.zhihu.IHotPresenter;
 import vip.xuanhao.integration.utils.RxUtils;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.IHotView;
+import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.HotAdapter;
 
 
@@ -83,5 +86,12 @@ public class HotPresenter extends BasePresenter<IHotView> implements IHotPresent
         if (hotAdapter != null) {
             hotAdapter.notifyDataSetChanged();
         }
+    }
+
+
+    public void onItemClick(Context mContext, View view, int position) {
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.putExtra("id", mList.get(position).getNews_id());
+        mContext.startActivity(intent);
     }
 }

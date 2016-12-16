@@ -112,6 +112,19 @@ public class DailyListBean {
         public void setImages(List<String> images) {
             this.images = images;
         }
+
+
+        @Override
+        public String toString() {
+            return "StoriesBean{" +
+                    "type=" + type +
+                    ", id=" + id +
+                    ", ga_prefix='" + ga_prefix + '\'' +
+                    ", title='" + title + '\'' +
+                    ", images=" + images +
+                    ", readState=" + readState +
+                    '}';
+        }
     }
 
     public static class TopStoriesBean {
@@ -159,6 +172,17 @@ public class DailyListBean {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        @Override
+        public String toString() {
+            return "TopStoriesBean{" +
+                    "image='" + image + '\'' +
+                    ", type=" + type +
+                    ", id=" + id +
+                    ", ga_prefix='" + ga_prefix + '\'' +
+                    ", title='" + title + '\'' +
+                    '}';
         }
     }
 }

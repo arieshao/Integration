@@ -5,6 +5,7 @@ import android.app.Activity;
 import dagger.Component;
 import vip.xuanhao.integration.di.modules.MainModule;
 import vip.xuanhao.integration.di.scopes.ActivityScope;
+import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.activitys.GuideActivity;
 import vip.xuanhao.integration.views.activitys.MainActivity;
 import vip.xuanhao.integration.views.activitys.WelcomeActivity;
@@ -30,4 +31,6 @@ public interface MainActivityComponent {
     void inject(ThemeDipoleListActivity dipoleListActivity);
 
     void inject(SpecialDipoleActivity specialDipoleActivity);
+
+    void inject(DetailActivity detailActivity);
 }

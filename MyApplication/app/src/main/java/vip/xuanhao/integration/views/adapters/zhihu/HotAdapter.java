@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,8 +30,6 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<HotListBean.RecentBean> mList;
 
     public HotAdapter(Context mContext, List<HotListBean.RecentBean> mList, IOnRecycleViewItemClickListener onclick) {
-
-        Logger.w("HotAdapter  is created");
         this.mContext = mContext;
         this.mList = mList;
         this.iOnRecycleViewItemClickListener = onclick;

@@ -7,7 +7,6 @@ import android.view.View;
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
-import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.DailyPresenter;
 import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsView;
 
@@ -17,11 +16,6 @@ import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsView;
 
 public class DailyNewFragment extends ZhihuBaseFragment<DailyPresenter> implements IDailyNewsView {
 
-
-    @Override
-    public int getLayoutResId() {
-        return R.layout.fragment_zhihu_news;
-    }
 
     @Override
     protected void initInject() {
@@ -34,7 +28,7 @@ public class DailyNewFragment extends ZhihuBaseFragment<DailyPresenter> implemen
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         zhihuNewsContent.setLayoutManager(linearLayoutManager);
         zhihuNewsContent.setItemAnimator(new DefaultItemAnimator());
-        zhihuNewsContent.setAdapter(presenter.getAdapter(mContext));
+        zhihuNewsContent.setAdapter(presenter.getAdapter(mContext, this));
     }
 
     @Override
@@ -46,7 +40,6 @@ public class DailyNewFragment extends ZhihuBaseFragment<DailyPresenter> implemen
     @Override
     public void onLoad(BaseFooterView baseFooterView) {
         presenter.getDataSource();
-
     }
 
     @Override
@@ -56,7 +49,7 @@ public class DailyNewFragment extends ZhihuBaseFragment<DailyPresenter> implemen
 
     @Override
     public void onItemClick(View view, int position) {
-
+        presenter.onItemClick(mContext, view, position);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package vip.xuanhao.integration.presenters.ipresenter.zhihu.impl;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import vip.xuanhao.integration.presenters.ipresenter.zhihu.IThemeDipolePresenter
 import vip.xuanhao.integration.utils.RxUtils;
 import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.IThemeDipoleView;
+import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.ThemeChildAdapter;
 
 /**
@@ -83,6 +85,9 @@ public class ThemeDipolePresenter extends BasePresenter<IThemeDipoleView> implem
     }
 
     public void onItemClick(Context context, View v, int position) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra("id", mList.get(position).getId());
+        context.startActivity(intent);
 
     }
 

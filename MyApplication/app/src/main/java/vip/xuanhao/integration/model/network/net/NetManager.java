@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import vip.xuanhao.integration.model.network.net.apiservice.WebApiService;
 import vip.xuanhao.integration.model.network.net.apiservice.ZhiHuApiService;
 
@@ -102,7 +102,7 @@ public class NetManager {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(WebApiService.BASE_URL)
                 .client(client)
-                .addConverterFactory(JacksonConverterFactory.create());
+                .addConverterFactory(GsonConverterFactory.create());
         if (isUseRxJava)
             builder.addCallAdapterFactory(RxJavaCallAdapterFactory.create());
         return builder.build();
@@ -136,7 +136,7 @@ public class NetManager {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(ZhiHuApiService.BASE_URL)
                 .client(client)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
         return builder.build();
     }

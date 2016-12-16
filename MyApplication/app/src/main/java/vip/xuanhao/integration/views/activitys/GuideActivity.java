@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.jaeger.library.StatusBarUtil;
+
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
 import butterknife.BindView;
@@ -142,7 +144,7 @@ public class GuideActivity extends BaseActivity<GuidePresenter> implements ViewP
 
     @Override
     protected void setStatusBar() {
-//        StatusBarUtil.setTranslucentForImageView(this, 0, null);
+        StatusBarUtil.setTranslucentForImageView(this, 0, null);
     }
 
     @OnClick({R.id.btn_jump, R.id.btn_guide})

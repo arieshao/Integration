@@ -3,52 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#aadefe"
-    android:fitsSystemWindows="true">
+    android:background="@android:color/white">
 
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary_dark"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/ctl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="#33475f"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="245dp"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.tencent.smtt.sdk.WebView
+            android:id="@+id/tencent_web"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/color_primary_dark"
-            app:titleTextColor="@android:color/white" />
+            android:layout_height="match_parent"
+            android:isScrollContainer="false"
+            android:overScrollMode="never">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <com.tencent.smtt.sdk.WebView
-                android:id="@+id/tencent_web"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical" />
-
-            <!--<android.support.v4.widget.DrawerLayout-->
-                <!--android:id="@+id/drawer_layout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical">-->
+        </com.tencent.smtt.sdk.WebView>
+    </android.support.v4.widget.NestedScrollView>
 
 
-                <!--<ListView-->
-                    <!--android:id="@+id/lv_menu"-->
-                    <!--android:layout_width="240dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="start"-->
-                    <!--android:background="@drawable/drawer_item_bg"-->
-                    <!--android:choiceMode="singleChoice"-->
-                    <!--android:divider="@null" />-->
-
-            <!--</android.support.v4.widget.DrawerLayout>-->
-        </FrameLayout>
-    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 

@@ -8,6 +8,8 @@ import com.race604.drawable.wave.WaveDrawable;
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.BasePresenter;
@@ -35,6 +37,11 @@ public abstract class ZhihuBaseFragment<T extends BasePresenter> extends BaseFra
     private WaveDrawable mWaveDrawable;
 
 
+    private int[] loadingPics = new int[]{R.drawable.christmastree
+            , R.drawable.christmasdeer
+            , R.drawable.christmasgift
+            , R.drawable.christmasman};
+
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_zhihu_news;
@@ -42,7 +49,10 @@ public abstract class ZhihuBaseFragment<T extends BasePresenter> extends BaseFra
 
     @Override
     public void initView() {
-        mWaveDrawable = new WaveDrawable(mContext, R.drawable.christmastree);
+
+        Random random = new Random();
+        int i = random.nextInt(4);
+        mWaveDrawable = new WaveDrawable(mContext,  loadingPics[i]);
         imageView.setImageDrawable(mWaveDrawable);
         mWaveDrawable.setIndeterminate(true);
         mWaveDrawable.start();
