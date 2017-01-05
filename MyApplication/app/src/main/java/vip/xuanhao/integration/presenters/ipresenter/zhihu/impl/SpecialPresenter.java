@@ -19,8 +19,8 @@ import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.ISpecialPresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialViewView;
 import vip.xuanhao.integration.views.activitys.zhihu.SpecialDipoleActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.SpecialAdapter;
 
@@ -28,7 +28,7 @@ import vip.xuanhao.integration.views.adapters.zhihu.SpecialAdapter;
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class SpecialPresenter extends BasePresenter<ISpecialView> implements ISpecialPresenter {
+public class SpecialPresenter extends BasePresenter<ISpecialViewView> implements ISpecialPresenter {
 
     private NetManager netManager;
     private SpecialAdapter specialAdapter;

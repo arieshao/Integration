@@ -14,7 +14,7 @@
 
         <include layout="@layout/include_titlebar" />
 
-        <vip.xuanhao.integration.views.ui.UnScrollViewPager
+        <vip.xuanhao.integration.app.widget.ui.UnScrollViewPager
             android:id="@+id/vp_community_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

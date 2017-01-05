@@ -2,14 +2,14 @@ package vip.xuanhao.integration.presenters;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import vip.xuanhao.integration.app.base.IBaseView;
 import vip.xuanhao.integration.presenters.ipresenter.IBasePresenter;
-import vip.xuanhao.integration.views.IBase;
 
 /**
  * Created by Xuanhao on 2016/11/4.
  */
 
-public class BasePresenter<T extends IBase> implements IBasePresenter<T> {
+public class BasePresenter<T extends IBaseView> implements IBasePresenter<T> {
 
     public T view;
 
@@ -21,6 +21,13 @@ public class BasePresenter<T extends IBase> implements IBasePresenter<T> {
             compositeSubscription = new CompositeSubscription();
         }
         compositeSubscription.add(s);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },"Thrad1").start();
     }
 
     private void unSubscriber() {

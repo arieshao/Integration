@@ -10,17 +10,17 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.HomePresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.IHomeView;
-import vip.xuanhao.integration.views.ui.NormalHeaderView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IHomeViewView;
+import vip.xuanhao.integration.app.widget.ui.NormalHeaderView;
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeView, OnItemClickListener, BaseHeaderView.OnRefreshListener, IOnRecycleViewItemClickListener {
+public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeViewView, OnItemClickListener, BaseHeaderView.OnRefreshListener, IOnRecycleViewItemClickListener {
 
 //    @BindView(R.id.convenientBanner)
 //    ConvenientBanner convenientBanner;

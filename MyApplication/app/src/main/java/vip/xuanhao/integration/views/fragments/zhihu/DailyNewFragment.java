@@ -8,13 +8,13 @@ import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.DailyPresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsViewView;
 
 /**
  * Created by Xuanhao on 2016/12/13.
  */
 
-public class DailyNewFragment extends ZhihuBaseFragment<DailyPresenter> implements IDailyNewsView {
+public class DailyNewFragment extends ZhihuBaseViewFragment<DailyPresenter> implements IDailyNewsViewView {
 
 
     @Override

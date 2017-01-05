@@ -13,6 +13,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -41,12 +42,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
         setContentView(getLayoutResId());
+        EventBus.getDefault().register(this);
         unbinder = ButterKnife.bind(this);
         setStatusBar();
         getIntentData();
-
         OtherSetting();
     }
 
@@ -88,7 +88,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
             presenter.attach(this);
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void receiverConnectionState(Events.ConnectionEvent event) {
         isConnection = event.isConnection();
     }

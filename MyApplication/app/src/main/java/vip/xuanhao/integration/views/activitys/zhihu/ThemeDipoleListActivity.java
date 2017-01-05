@@ -3,13 +3,11 @@ package vip.xuanhao.integration.views.activitys.zhihu;
 import android.content.Intent;
 import android.view.View;
 
-import com.jaeger.library.StatusBarUtil;
 import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
-import vip.xuanhao.integration.app.common.Commons;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.ThemeDipolePresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.IThemeDipoleView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IThemeDipoleViewView;
 
 
 /**
@@ -17,7 +15,7 @@ import vip.xuanhao.integration.views.Iviews.zhihu.IThemeDipoleView;
  * 知乎二级列表
  */
 
-public class ThemeDipoleListActivity extends ZhihuBaseActivity<ThemeDipolePresenter> implements IThemeDipoleView {
+public class ThemeDipoleListActivity extends ZhihuBaseViewActivity<ThemeDipolePresenter> implements IThemeDipoleViewView {
 
 
     private int id;

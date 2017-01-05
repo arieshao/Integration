@@ -18,7 +18,7 @@ import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.AppTab;
 import vip.xuanhao.integration.presenters.ipresenter.IMainPresenter;
 import vip.xuanhao.integration.utils.PreferenceHelper;
-import vip.xuanhao.integration.views.Iviews.IMainView;
+import vip.xuanhao.integration.views.Iviews.IMainViewView;
 import vip.xuanhao.integration.views.adapters.MainPagerAdapter;
 import vip.xuanhao.integration.views.fragments.CommunityFragment;
 import vip.xuanhao.integration.views.fragments.PersonalFragment;
@@ -29,7 +29,7 @@ import vip.xuanhao.integration.views.fragments.zhihu.ZhiHuFragment;
  * Created by Xuanhao on 2016/9/13.
  */
 
-public class MainPresenter extends BasePresenter<IMainView> implements IMainPresenter {
+public class MainPresenter extends BasePresenter<IMainViewView> implements IMainPresenter {
 
     private Context mContext;
     private MainPagerAdapter mAdapter;

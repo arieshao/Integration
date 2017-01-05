@@ -3,7 +3,7 @@ package vip.xuanhao.integration.app.common;
 import java.io.File;
 
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.app.BaseApplication;
+import vip.xuanhao.integration.app.base.BaseApplication;
 
 /**
  * Created by Xuanhao on 2016/12/7.

@@ -9,13 +9,13 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.SpecialPresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialView;
+import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialViewView;
 
 /**
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class SpecialFragment extends ZhihuBaseFragment<SpecialPresenter> implements ISpecialView {
+public class SpecialFragment extends ZhihuBaseViewFragment<SpecialPresenter> implements ISpecialViewView {
 
     @Override
     public int getLayoutResId() {

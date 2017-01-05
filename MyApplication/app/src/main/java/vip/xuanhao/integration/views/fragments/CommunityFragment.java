@@ -4,9 +4,9 @@ import android.support.design.widget.TabLayout;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.CommunityPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.ui.UnScrollViewPager;
+import vip.xuanhao.integration.app.widget.ui.UnScrollViewPager;
 
 /**
  * Created by Xuanhao on 2016/9/14.

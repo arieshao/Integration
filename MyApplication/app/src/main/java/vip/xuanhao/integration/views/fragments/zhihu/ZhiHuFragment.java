@@ -5,15 +5,15 @@ import android.support.v4.view.ViewPager;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.ZhiHuPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuViewView;
 
 /**
  * Created by Xuanhao on 2016/12/13.
  */
 
-public class ZhiHuFragment extends BaseFragment<ZhiHuPresenter> implements IZhiHuView {
+public class ZhiHuFragment extends BaseFragment<ZhiHuPresenter> implements IZhiHuViewView {
 
 
     @BindView(R.id.zhihu_tab)

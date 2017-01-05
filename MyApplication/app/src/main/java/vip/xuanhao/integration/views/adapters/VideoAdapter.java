@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.ImageBean;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 
 /**
  * Created by Xuanhao on 2016/10/21.

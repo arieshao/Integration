@@ -8,13 +8,13 @@ import vip.xuanhao.integration.model.domain.ZhihuDetailBean;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.Iviews.IDetailView;
+import vip.xuanhao.integration.views.Iviews.IDetailViewView;
 
 /**
  * Created by Xuanhao on 2016/12/16.
  */
 
-public class DetailPresenter extends BasePresenter<IDetailView> implements IDetailPresenter {
+public class DetailPresenter extends BasePresenter<IDetailViewView> implements IDetailPresenter {
 
 
     private NetManager netManager;

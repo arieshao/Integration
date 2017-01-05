@@ -10,20 +10,20 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.VideoPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.IVideoView;
-import vip.xuanhao.integration.views.ui.ExpandFooterView;
-import vip.xuanhao.integration.views.ui.ExpandHeaderView;
-import vip.xuanhao.integration.views.ui.GridItemDecoration;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IVideoViewView;
+import vip.xuanhao.integration.app.widget.ui.ExpandFooterView;
+import vip.xuanhao.integration.app.widget.ui.ExpandHeaderView;
+import vip.xuanhao.integration.app.widget.ui.GridItemDecoration;
 
 
 /**
  * Created by Xuanhao on 2016/9/14.
  */
 
-public class VideoFragment extends BaseFragment<VideoPresenter> implements IVideoView, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
+public class VideoFragment extends BaseFragment<VideoPresenter> implements IVideoViewView, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
 
 
     @BindView(R.id.rec_video_content)

@@ -8,13 +8,13 @@ import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.ThemePresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.IThemeView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IThemeViewView;
 
 /**
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class ThemeFragment extends ZhihuBaseFragment<ThemePresenter> implements IThemeView {
+public class ThemeFragment extends ZhihuBaseViewFragment<ThemePresenter> implements IThemeViewView {
 
 
 

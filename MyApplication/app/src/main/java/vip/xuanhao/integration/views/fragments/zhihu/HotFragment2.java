@@ -8,13 +8,13 @@ import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.HotPresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.IHotView;
+import vip.xuanhao.integration.views.Iviews.zhihu.IHotViewView;
 
 /**
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class HotFragment2 extends ZhihuBaseFragment<HotPresenter> implements IHotView {
+public class HotFragment2 extends ZhihuBaseViewFragment<HotPresenter> implements IHotViewView {
 
 
     @Override

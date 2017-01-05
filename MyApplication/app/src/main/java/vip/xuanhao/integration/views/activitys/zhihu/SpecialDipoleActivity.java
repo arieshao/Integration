@@ -7,13 +7,13 @@ import com.ybao.pullrefreshview.layout.BaseFooterView;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.SpecialDipolePresenter;
-import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialView;
+import vip.xuanhao.integration.views.Iviews.zhihu.ISpecialViewView;
 
 /**
  * Created by Xuanhao on 2016/12/15.
  */
 
-public class SpecialDipoleActivity extends ZhihuBaseActivity<SpecialDipolePresenter> implements ISpecialView {
+public class SpecialDipoleActivity extends ZhihuBaseViewActivity<SpecialDipolePresenter> implements ISpecialViewView {
 
     private int id;
     private String name;

@@ -18,8 +18,8 @@ import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.GuidePresenter;
 import vip.xuanhao.integration.utils.AnimatorHelper;
 import vip.xuanhao.integration.utils.ImageLoaderHelper;
-import vip.xuanhao.integration.views.BaseActivity;
-import vip.xuanhao.integration.views.ui.ScaleCircleNavigator;
+import vip.xuanhao.integration.app.base.BaseActivity;
+import vip.xuanhao.integration.app.widget.ui.ScaleCircleNavigator;
 
 /**
  * Created by Xuanhao on 2016/9/9.

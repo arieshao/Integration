@@ -4,9 +4,9 @@ package vip.xuanhao.integration.app.common;
  * Created by Xuanhao on 2016/8/18.
  */
 
-public class Events {
+public interface Events {
 
-    public static class ConnectionEvent {
+     class ConnectionEvent {
 
         private boolean isConnection;
 

@@ -10,16 +10,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.SquarePresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.Iviews.ISquareView;
+import vip.xuanhao.integration.views.Iviews.ISquareViewView;
 import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquareFragment extends BaseFragment<SquarePresenter> implements ISquareView {
+public class SquareFragment extends BaseFragment<SquarePresenter> implements ISquareViewView {
 
 
     @BindView(R.id.swipe_deck)

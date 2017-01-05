@@ -2,7 +2,7 @@ package vip.xuanhao.integration.presenters.ipresenter;
 
 import android.view.View;
 
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.adapters.VideoAdapter;
 
 /**

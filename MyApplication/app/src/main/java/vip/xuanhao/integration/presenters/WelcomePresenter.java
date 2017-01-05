@@ -16,7 +16,7 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import vip.xuanhao.integration.utils.PreferenceHelper;
-import vip.xuanhao.integration.views.Iviews.IWelcomeView;
+import vip.xuanhao.integration.views.Iviews.IWelcomeViewView;
 import vip.xuanhao.integration.views.activitys.GuideActivity;
 import vip.xuanhao.integration.views.activitys.MainActivity;
 
@@ -24,7 +24,7 @@ import vip.xuanhao.integration.views.activitys.MainActivity;
  * Created by Xuanhao on 2016/11/28.
  */
 
-public class WelcomePresenter extends BasePresenter<IWelcomeView> {
+public class WelcomePresenter extends BasePresenter<IWelcomeViewView> {
 
     private PreferenceHelper preferenceHelper;
     private Context mContext;

@@ -8,15 +8,15 @@ import java.util.List;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.GroupPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.Iviews.IGroupView;
+import vip.xuanhao.integration.views.Iviews.IGroupViewView;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class GroupFragment extends BaseFragment<GroupPresenter> implements IGroupView {
+public class GroupFragment extends BaseFragment<GroupPresenter> implements IGroupViewView {
 
     @BindView(R.id.lv_test)
     ListView lvTest;

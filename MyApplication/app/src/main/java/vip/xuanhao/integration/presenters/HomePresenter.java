@@ -30,8 +30,8 @@ import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.ImageBean;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.IHomePresenter;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.IHomeView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IHomeViewView;
 import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.adapters.HomeAdapter;
 
@@ -39,7 +39,7 @@ import vip.xuanhao.integration.views.adapters.HomeAdapter;
  * Created by Xuanhao on 2016/9/20.
  */
 
-public class HomePresenter extends BasePresenter<IHomeView> implements IHomePresenter {
+public class HomePresenter extends BasePresenter<IHomeViewView> implements IHomePresenter {
 
 
     private Context context;

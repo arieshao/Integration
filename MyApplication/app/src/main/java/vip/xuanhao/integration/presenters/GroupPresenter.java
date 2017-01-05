@@ -8,13 +8,13 @@ import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 
 import vip.xuanhao.integration.model.network.net.NetManager;
-import vip.xuanhao.integration.views.Iviews.IGroupView;
+import vip.xuanhao.integration.views.Iviews.IGroupViewView;
 
 /**
  * Created by Xuanhao on 2016/11/9.
  */
 
-public class GroupPresenter extends BasePresenter<IGroupView> {
+public class GroupPresenter extends BasePresenter<IGroupViewView> {
 
 
     private Context mContext;

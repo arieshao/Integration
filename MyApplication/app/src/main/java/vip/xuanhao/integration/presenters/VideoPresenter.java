@@ -25,15 +25,15 @@ import rx.schedulers.Schedulers;
 import vip.xuanhao.integration.model.domain.ImageBean;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.IVideoPresenter;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.IVideoView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.IVideoViewView;
 import vip.xuanhao.integration.views.adapters.VideoAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/28.
  */
 
-public class VideoPresenter extends BasePresenter <IVideoView> implements IVideoPresenter {
+public class VideoPresenter extends BasePresenter <IVideoViewView> implements IVideoPresenter {
 
     private VideoAdapter mAdapter;
     private Context mContext;

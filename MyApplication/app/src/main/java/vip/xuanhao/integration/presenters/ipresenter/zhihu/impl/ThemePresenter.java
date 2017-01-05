@@ -19,8 +19,8 @@ import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.IThemePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.IThemeView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.IThemeViewView;
 import vip.xuanhao.integration.views.activitys.zhihu.ThemeDipoleListActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.ThemeAdapter;
 
@@ -28,7 +28,7 @@ import vip.xuanhao.integration.views.adapters.zhihu.ThemeAdapter;
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class ThemePresenter extends BasePresenter<IThemeView> implements IThemePresenter {
+public class ThemePresenter extends BasePresenter<IThemeViewView> implements IThemePresenter {
 
     private NetManager netManager;
 

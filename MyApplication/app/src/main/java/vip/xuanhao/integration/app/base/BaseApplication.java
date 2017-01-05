@@ -14,6 +14,7 @@ import com.xiaomi.channel.commonutils.logger.LoggerInterface;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import vip.xuanhao.integration.di.components.BaseApplicationComponent;
 import vip.xuanhao.integration.di.components.DaggerBaseApplicationComponent;
@@ -35,6 +36,10 @@ public class BaseApplication extends Application {
 
 
     public BaseApplication() {
+
+        Executors.newSingleThreadExecutor();
+        Executors.newFixedThreadPool(5);
+        Executors.newScheduledThreadPool(10);
     }
 
     @Override

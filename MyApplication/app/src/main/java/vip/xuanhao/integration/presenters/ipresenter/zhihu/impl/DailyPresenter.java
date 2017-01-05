@@ -18,8 +18,8 @@ import vip.xuanhao.integration.model.domain.DailyListBean;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.IDailyNewsViewView;
 import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.DailyNewsAdapter;
 
@@ -27,7 +27,7 @@ import vip.xuanhao.integration.views.adapters.zhihu.DailyNewsAdapter;
  * Created by Xuanhao on 2016/12/13.
  */
 
-public class DailyPresenter extends BasePresenter<IDailyNewsView> {
+public class DailyPresenter extends BasePresenter<IDailyNewsViewView> {
 
     private NetManager netManager;
     private DailyNewsAdapter dailyNewsAdapter;

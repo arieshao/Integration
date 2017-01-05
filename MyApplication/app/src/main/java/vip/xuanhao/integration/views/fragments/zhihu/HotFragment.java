@@ -12,19 +12,19 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseFragment;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.impl.HotPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.IHotView;
-import vip.xuanhao.integration.views.ui.ExpandFooterView;
-import vip.xuanhao.integration.views.ui.ExpandHeaderView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.IHotViewView;
+import vip.xuanhao.integration.app.widget.ui.ExpandFooterView;
+import vip.xuanhao.integration.app.widget.ui.ExpandHeaderView;
 
 /**
  * Created by Xuanhao on 2016/12/14.
  */
 
 @Deprecated
-public class HotFragment extends BaseFragment<HotPresenter> implements IHotView
+public class HotFragment extends BaseFragment<HotPresenter> implements IHotViewView
         , BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
 
     @BindView(R.id.zhihu_news_content)

@@ -18,15 +18,15 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 import butterknife.BindView;
 import rx.functions.Action1;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseActivity;
 import vip.xuanhao.integration.app.common.Commons;
+import vip.xuanhao.integration.app.widget.ui.UnScrollViewPager;
 import vip.xuanhao.integration.presenters.MainPresenter;
 import vip.xuanhao.integration.utils.MainTabHelper;
-import vip.xuanhao.integration.views.BaseActivity;
-import vip.xuanhao.integration.views.Iviews.IMainView;
-import vip.xuanhao.integration.views.ui.UnScrollViewPager;
+import vip.xuanhao.integration.views.Iviews.IMainViewView;
 
 
-public class MainActivity extends BaseActivity<MainPresenter> implements IMainView {
+public class MainActivity extends BaseActivity<MainPresenter> implements IMainViewView {
 
     @BindView(R.id.viewpager_main)
     UnScrollViewPager viewpagerMain;
@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @TargetApi(19)
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(Commons.STATUSBARCOLOR), 0);
+
     }
 
     @Override

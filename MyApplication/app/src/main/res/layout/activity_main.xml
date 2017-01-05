@@ -28,7 +28,7 @@
                     <include layout="@layout/include_toolbar" />
                 </android.support.design.widget.AppBarLayout>
 
-                <vip.xuanhao.integration.views.ui.UnScrollViewPager
+                <vip.xuanhao.integration.app.widget.ui.UnScrollViewPager
                     android:id="@+id/viewpager_main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

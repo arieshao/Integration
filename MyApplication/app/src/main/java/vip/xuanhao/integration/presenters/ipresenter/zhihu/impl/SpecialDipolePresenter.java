@@ -16,8 +16,8 @@ import vip.xuanhao.integration.model.domain.SectionChildListBean;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuBaseView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuBaseViewView;
 import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.activitys.zhihu.SpecialDipoleActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.SpecialChildAdapter;
@@ -26,7 +26,7 @@ import vip.xuanhao.integration.views.adapters.zhihu.SpecialChildAdapter;
  * Created by Xuanhao on 2016/12/15.
  */
 
-public class SpecialDipolePresenter extends BasePresenter<IZhiHuBaseView> {
+public class SpecialDipolePresenter extends BasePresenter<IZhiHuBaseViewView> {
 
 
     private NetManager netManager;

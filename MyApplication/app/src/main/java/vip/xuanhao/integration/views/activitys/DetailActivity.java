@@ -18,14 +18,14 @@ import vip.xuanhao.integration.model.domain.ZhihuDetailBean;
 import vip.xuanhao.integration.presenters.ipresenter.DetailPresenter;
 import vip.xuanhao.integration.utils.HtmlUtil;
 import vip.xuanhao.integration.utils.ImageLoaderHelper;
-import vip.xuanhao.integration.views.BaseActivity;
-import vip.xuanhao.integration.views.Iviews.IDetailView;
+import vip.xuanhao.integration.app.base.BaseActivity;
+import vip.xuanhao.integration.views.Iviews.IDetailViewView;
 
 /**
  * Created by Xuanhao on 2016/12/5.
  */
 
-public class DetailActivity extends BaseActivity<DetailPresenter> implements IDetailView {
+public class DetailActivity extends BaseActivity<DetailPresenter> implements IDetailViewView {
     @BindView(R.id.toolbar)
     Toolbar viewToolbar;
     @BindView(R.id.tencent_web)

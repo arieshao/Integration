@@ -21,7 +21,7 @@ import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.DailyListBean;
 import vip.xuanhao.integration.utils.BannerHelper;
 import vip.xuanhao.integration.utils.ImageLoaderHelper;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.activitys.DetailActivity;
 
 /**

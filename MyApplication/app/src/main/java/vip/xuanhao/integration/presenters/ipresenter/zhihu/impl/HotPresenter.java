@@ -17,8 +17,8 @@ import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.BasePresenter;
 import vip.xuanhao.integration.presenters.ipresenter.zhihu.IHotPresenter;
 import vip.xuanhao.integration.utils.RxUtils;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
-import vip.xuanhao.integration.views.Iviews.zhihu.IHotView;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.views.Iviews.zhihu.IHotViewView;
 import vip.xuanhao.integration.views.activitys.DetailActivity;
 import vip.xuanhao.integration.views.adapters.zhihu.HotAdapter;
 
@@ -27,7 +27,7 @@ import vip.xuanhao.integration.views.adapters.zhihu.HotAdapter;
  * Created by Xuanhao on 2016/12/14.
  */
 
-public class HotPresenter extends BasePresenter<IHotView> implements IHotPresenter {
+public class HotPresenter extends BasePresenter<IHotViewView> implements IHotPresenter {
 
     private NetManager netManager;
     private HotAdapter hotAdapter;

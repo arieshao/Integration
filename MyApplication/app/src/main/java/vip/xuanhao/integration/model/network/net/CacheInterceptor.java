@@ -10,7 +10,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import vip.xuanhao.integration.app.BaseApplication;
+import vip.xuanhao.integration.app.base.BaseApplication;
 
 /**
  * Created by Xuanhao on 2016/12/1.
@@ -50,7 +50,9 @@ public class CacheInterceptor implements Interceptor {
     }
 
     private boolean isNetworkConnected() {
-        ConnectivityManager connectivity = (ConnectivityManager) BaseApplication.getAppComponent().context()
+        ConnectivityManager connectivity = (ConnectivityManager) BaseApplication
+                .getAppComponent()
+                .context()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (null != connectivity) {
             NetworkInfo info = connectivity.getActiveNetworkInfo();

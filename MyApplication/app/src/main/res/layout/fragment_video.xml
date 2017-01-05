@@ -46,13 +46,13 @@
 
             </android.support.v7.widget.RecyclerView>
 
-            <vip.xuanhao.integration.views.ui.ExpandHeaderView
+            <vip.xuanhao.integration.app.widget.ui.ExpandHeaderView
                 android:id="@+id/square_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
 
-            <vip.xuanhao.integration.views.ui.ExpandFooterView
+            <vip.xuanhao.integration.app.widget.ui.ExpandFooterView
                 android:id="@+id/square_footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

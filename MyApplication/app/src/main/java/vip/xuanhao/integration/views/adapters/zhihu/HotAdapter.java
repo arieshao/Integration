@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.HotListBean;
 import vip.xuanhao.integration.utils.ImageLoaderHelper;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 
 /**
  * Created by Xuanhao on 2016/12/14.

@@ -6,15 +6,15 @@ import com.jaeger.library.StatusBarUtil;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
+import vip.xuanhao.integration.app.base.BaseActivity;
 import vip.xuanhao.integration.presenters.WelcomePresenter;
-import vip.xuanhao.integration.views.BaseActivity;
-import vip.xuanhao.integration.views.Iviews.IWelcomeView;
+import vip.xuanhao.integration.views.Iviews.IWelcomeViewView;
 
 /**
  * Created by Xuanhao on 2016/11/28.
  */
 
-public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements IWelcomeView {
+public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements IWelcomeViewView {
 
 
     @BindView(R.id.tv_wel_countdown)

@@ -13,10 +13,10 @@ import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.presenters.PersonalPresenter;
-import vip.xuanhao.integration.views.BaseFragment;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.base.BaseFragment;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IPersonalView;
-import vip.xuanhao.integration.views.ui.DividerGridItemDecoration;
+import vip.xuanhao.integration.app.widget.ui.DividerGridItemDecoration;
 
 import static vip.xuanhao.integration.R.id.rclyview_choose;
 

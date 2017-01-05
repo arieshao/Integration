@@ -6,7 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import vip.xuanhao.integration.app.BaseApplication;
+import vip.xuanhao.integration.app.base.BaseApplication;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.utils.PreferenceHelper;
 

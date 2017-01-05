@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.views.adapters.RecommAdapter;
-import vip.xuanhao.integration.views.ui.RecycleItemDecoration;
+import vip.xuanhao.integration.app.widget.ui.RecycleItemDecoration;
 
 /**
  * Created by Xuanhao on 2016/8/2.

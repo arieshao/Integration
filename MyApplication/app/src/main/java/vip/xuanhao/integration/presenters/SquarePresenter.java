@@ -12,14 +12,14 @@ import javax.inject.Inject;
 
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.ISquarePresenter;
-import vip.xuanhao.integration.views.Iviews.ISquareView;
+import vip.xuanhao.integration.views.Iviews.ISquareViewView;
 import vip.xuanhao.integration.views.adapters.SwipeDeckAdapter;
 
 /**
  * Created by Xuanhao on 2016/9/19.
  */
 
-public class SquarePresenter extends BasePresenter<ISquareView> implements ISquarePresenter {
+public class SquarePresenter extends BasePresenter<ISquareViewView> implements ISquarePresenter {
 
     private List<String> dataSource;
     private SwipeDeckAdapter swipeDeckAdapter;

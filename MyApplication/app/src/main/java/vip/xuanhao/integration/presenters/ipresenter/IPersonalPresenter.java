@@ -6,7 +6,7 @@ import android.view.View;
 import java.util.List;
 
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 
 /**

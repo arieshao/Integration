@@ -14,7 +14,7 @@ import vip.xuanhao.integration.R;
 import vip.xuanhao.integration.model.domain.PersonalViewModel;
 import vip.xuanhao.integration.model.network.net.NetManager;
 import vip.xuanhao.integration.presenters.ipresenter.IPersonalPresenter;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.IPersonalView;
 import vip.xuanhao.integration.views.adapters.PersonalAdapter;
 

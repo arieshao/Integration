@@ -13,19 +13,19 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 import butterknife.BindView;
 import vip.xuanhao.integration.R;
-import vip.xuanhao.integration.app.base.BaseViewActivity;
+import vip.xuanhao.integration.app.base.BaseActivity;
 import vip.xuanhao.integration.app.common.Commons;
 import vip.xuanhao.integration.presenters.BasePresenter;
-import vip.xuanhao.integration.views.IOnRecycleViewItemClickListener;
+import vip.xuanhao.integration.app.widget.IOnRecycleViewItemClickListener;
 import vip.xuanhao.integration.views.Iviews.zhihu.IZhiHuBaseViewView;
-import vip.xuanhao.integration.views.ui.ExpandFooterView;
-import vip.xuanhao.integration.views.ui.ExpandHeaderView;
+import vip.xuanhao.integration.app.widget.ui.ExpandFooterView;
+import vip.xuanhao.integration.app.widget.ui.ExpandHeaderView;
 
 /**
  * Created by Xuanhao on 2016/12/15.
  */
 
-public abstract class ZhihuBaseViewActivity<T extends BasePresenter> extends BaseViewActivity<T> implements IZhiHuBaseViewView
+public abstract class ZhihuBaseViewActivity<T extends BasePresenter> extends BaseActivity<T> implements IZhiHuBaseViewView
         , BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener, IOnRecycleViewItemClickListener {
 
     @BindView(R.id.toolbar_allpage)
